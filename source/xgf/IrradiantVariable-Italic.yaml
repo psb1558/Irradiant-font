@@ -1,0 +1,8503 @@
+font:
+  in: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariable-ItalicVF.ttf
+  out: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariable-Italic.ttf
+defaults:
+  cv_vars_generated: true
+  no-round:
+  - stem
+cvt:
+  baseline:
+    val: 0
+    type: pos
+    axis: y
+  cap-height:
+    val: 646
+    type: pos
+    axis: y
+    cat: Lu
+    origin:
+      glyph: H
+      ptnum:
+      - 15
+    var:
+      opsz-min: 654
+  xheight:
+    val: 465
+    type: pos
+    axis: y
+    cat: Ll
+    origin:
+      glyph: uni0448
+      ptnum:
+      - 32
+    var:
+      opsz-min: 526
+      opsz-max: 404
+  cap-height-overshoot:
+    val: 658
+    type: pos
+    axis: y
+    cat: Lu
+    same-as:
+      below:
+        ppem: 40
+        cv: cap-height
+    origin:
+      glyph: O
+      ptnum:
+      - 6
+    var:
+      opsz-min: 666
+  cap-baseline-undershoot:
+    val: -12
+    type: pos
+    axis: y
+    cat: Lu
+    same-as:
+      below:
+        ppem: 40
+        cv: baseline
+    origin:
+      glyph: O
+      ptnum:
+      - 0
+  xheight-overshoot:
+    val: 477
+    type: pos
+    axis: y
+    cat: Ll
+    same-as:
+      below:
+        ppem: 40
+        cv: xheight
+    origin:
+      glyph: o
+      ptnum:
+      - 6
+    var:
+      opsz-min: 538
+      opsz-max: 416
+  lc-baseline-undershoot:
+    val: -12
+    type: pos
+    axis: y
+    cat: Ll
+    same-as:
+      below:
+        ppem: 40
+        cv: baseline
+    origin:
+      glyph: o
+      ptnum:
+      - 0
+  lc-ascender:
+    val: 750
+    type: pos
+    axis: y
+    cat: Ll
+    origin:
+      glyph: b
+      ptnum:
+      - 12
+  lc-descender:
+    val: -250
+    type: pos
+    axis: y
+    cat: Ll
+    origin:
+      glyph: p
+      ptnum:
+      - 34
+  num-round-top:
+    val: 626
+    type: pos
+    axis: y
+    cat: Nd
+    same-as:
+      below:
+        ppem: 40
+        cv: num-flat-top
+    origin:
+      glyph: eight
+      ptnum:
+      - 11
+  num-baseline-undershoot:
+    val: -10
+    type: pos
+    axis: y
+    cat: Nd
+    same-as:
+      below:
+        ppem: 40
+        cv: baseline
+    origin:
+      glyph: eight
+      ptnum:
+      - 0
+    var:
+      opsz-min: -11
+  num-flat-top:
+    val: 475
+    type: pos
+    axis: y
+    cat: Nd
+    origin:
+      glyph: five
+      ptnum:
+      - 15
+    var:
+      opsz-min: 538
+      opsz-max: 413
+  diacritic-height:
+    axis: y
+    type: pos
+    val: 577
+    origin:
+      glyph: i
+      ptnum:
+      - 11
+  serif-undershoot:
+    axis: y
+    type: dist
+    val: 6
+    origin:
+      glyph: A
+      ptnum:
+      - 43
+      - 45
+  cap-G-serif:
+    axis: y
+    type: pos
+    val: 231
+    origin:
+      glyph: G
+      ptnum:
+      - 58
+  superscript-baseline-undershoot:
+    axis: y
+    type: pos
+    val: 293
+    origin:
+      glyph: uni2070.zero
+      ptnum:
+      - 15
+  superscript-xheight-overshoot:
+    axis: y
+    type: pos
+    val: 636
+    origin:
+      glyph: uni2070.zero
+      ptnum:
+      - 7
+  cap-greek-diacritic-height:
+    axis: y
+    type: pos
+    val: 418
+    origin:
+      glyph: uni1F08
+      ptnum:
+      - 67
+    cat: Lu
+  ypo_height:
+    axis: y
+    type: pos
+    val: 398
+    origin:
+      glyph: uni1F88
+      ptnum:
+      - 54
+prep:
+  code: |-
+    <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+                <!-- Turn off hinting above 300 ppem -->
+                <if test="pixels-per-em &gt; 300">
+                    <disable-instructions/>
+                </if>
+                <!-- Dropout control -->
+                <push>4 511</push>
+                <command name="SCANCTRL"/>
+                <command name="SCANTYPE"/>
+                </code>
+functions:
+  delta:
+    primitive: true
+    stack-safe: true
+    size:
+      type: int
+      val: 25
+    distance:
+      type: int
+      val: 0
+    pt:
+      type: point
+      subtype: target
+    code: |-
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+              <command name="SDB"/>
+              <command name="DUP"/>
+              <push>0</push>
+              <command name="NEQ"/>
+              <command name="IF"/>
+              <command name="DUP"/>
+              <push>0</push>
+              <command name="LT"/>
+              <command name="IF"/>
+              <push>8</push>
+              <command name="ADD"/>
+              <command name="ELSE"/>
+              <push>7</push>
+              <command name="ADD"/>
+              <command name="EIF"/>
+              <command name="SWAP"/>
+              <push>1</push>
+              <command name="DELTAP1"/>
+              <command name="ELSE"/>
+              <command name="POP"/>
+              <command name="POP"/>
+              <command name="EIF"/>
+              <push>8</push>
+              <command name="SDB"/>
+              </code>
+  cupped-serif-helper:
+    stack-safe: true
+    base:
+      type: point
+      subtype: target
+    pt-a:
+      type: point
+      subtype: target
+    base-cv:
+      val: baseline
+      type: pos
+    cup-cv:
+      val: serif-undershoot
+      type: dist
+    ppem:
+      type: int
+      val: 190
+    code: |
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+        <move distance="base-cv">
+          <point num="base"/>
+        </move>
+        <if test="pixels-per-em &lt; ppem">
+          <align>
+            <point num="pt-a"/>
+          </align>
+          <else>
+            <command name="RTDG"/>
+            <move distance="cup-cv">
+              <reference>
+                <point num="base"/>
+              </reference>
+              <point num="pt-a"/>
+            </move>
+            <command name="RTG"/>
+          </else>
+        </if>
+      </code>
+  conditional-align:
+    stack-safe: true
+    base:
+      type: point
+      subtype: ref
+    target:
+      type: point
+      subtype: target
+    threshold:
+      type: int
+      val: 99
+    code: |-
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+        <if test="pixels-per-em &lt; threshold">
+          <align>
+            <reference>
+              <point num="base"/>
+            </reference>
+            <point num="target"/>
+          </align>
+          <else>
+            <move round="yes" min-distance="no">
+              <reference>
+                <point num="base"/>
+              </reference>
+              <point num="target"/>
+            </move>
+          </else>
+        </if>
+      </code>
+  align-or-shift:
+    stack-safe: true
+    primitive: true
+    ppem:
+      type: int
+      val: 43
+    r:
+      type: point
+      subtype: ref
+    p:
+      type: point
+      subtype: target
+    code: |
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+        <command name="MPPEM"/>
+        <command name="GT"/>
+        <command name="IF"/>
+        <command name="SRP0"/>
+        <command name="ALIGNRP"/>
+        <command name="ELSE"/>
+        <command name="SRP1"/>
+        <command name="SHP" modifier="1"/>
+        <command name="EIF"/>
+      </code>
+  mid-bar:
+    stack-safe: true
+    primitive: true
+    top:
+      type: point
+      subtype: ref
+    bar-top:
+      type: point
+      subtype: target
+    bar-bot:
+      type: point
+      subtype: target
+    base:
+      type: point
+      subtype: ref
+    code: |-
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+        <command name="DUP"/>
+        <push>3</push>
+        <command name="CINDEX"/>
+        <command name="MD" modifier="1"/>
+        <push>4</push>
+        <command name="CINDEX"/>
+        <push>6</push>
+        <command name="CINDEX"/>
+        <command name="MD" modifier="1"/>
+        <command name="DUP"/>
+        <command name="ROLL"/>
+        <command name="ADD"/>
+        <command name="ROLL"/>
+        <push>6</push>
+        <command name="CINDEX"/>
+        <command name="MD" modifier="0"/>
+        <push>5</push>
+        <command name="CINDEX"/>
+        <command name="DUP"/>
+        <command name="SRP0"/>
+        <push>5</push>
+        <command name="CINDEX"/>
+        <command name="DUP"/>
+        <command name="MDRP" modifier="11001"/>
+        <command name="MD" modifier="0"/>
+        <command name="ADD"/>
+        <command name="ROLL"/>
+        <command name="MUL"/>
+        <command name="SWAP"/>
+        <command name="DIV"/>
+        <command name="ROUND" modifier="01"/>
+        <push>3</push>
+        <command name="CINDEX"/>
+        <push>5</push>
+        <command name="MINDEX"/>
+        <command name="MD" modifier="0"/>
+        <command name="SUB"/>
+        <command name="DUP"/>
+        <command name="ROLL"/>
+        <command name="SWAP"/>
+        <command name="SHPIX"/>
+        <command name="SHPIX"/>
+      </code>
+macros:
+  cupped-serif:
+    base:
+      type: point
+      subtype: target
+    base-sh:
+      type: point
+      subtype: target
+      val: -1
+    pt-a:
+      type: point
+      subtype: target
+    pt-a-sh:
+      type: point
+      subtype: target
+      val: -1
+    pt-b:
+      type: point
+      subtype: target
+    pt-b-sh:
+      type: point
+      subtype: target
+      val: -1
+    base-cv:
+      val: baseline
+      type: pos
+    cup-cv:
+      val: serif-undershoot
+      type: pos
+    ppem:
+      type: int
+      val: 125
+    code: |
+      <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
+        <compile-if test="base-cv &gt;= 0">
+          <move distance="base-cv">
+            <point num="base"/>
+            <shift compile-if="not( nan(base-sh) ) and base-sh &gt;= 0">
+              <point num="base-sh"/>
+            </shift>
+            <shift compile-if="nan(base-sh)">
+              <set ref="base-sh"/>
+            </shift>
+            <move round="no">
+              <point num="pt-b"/>
+              <shift compile-if="not( nan(pt-b-sh) ) and pt-b-sh &gt;= 0">
+                <point num="pt-b-sh"/>
+              </shift>
+              <shift compile-if="nan(pt-b-sh)">
+                <set ref="pt-b-sh"/>
+              </shift>
+            </move>
+          </move>
+          <else>
+            <move>
+              <point num="base"/>
+              <shift compile-if="not( nan(base-sh) ) and base-sh &gt;= 0">
+                <point num="base-sh"/>
+              </shift>
+              <shift compile-if="nan(base-sh)">
+                <set ref="base-sh"/>
+              </shift>
+              <move round="no">
+                <point num="pt-b"/>
+                <shift compile-if="not( nan(pt-b-sh) ) and pt-b-sh &gt;= 0">
+                  <point num="pt-b-sh"/>
+                </shift>
+                <shift compile-if="nan(pt-b-sh)">
+                  <set ref="pt-b-sh"/>
+                </shift>
+              </move>
+            </move>
+          </else>
+        </compile-if>
+        <call-function name="serif-helper">
+          <with-param name="base" value="base"/>
+          <with-param name="pt-a" value="pt-a"/>
+          <with-param name="base-cv" value="base-cv"/>
+          <with-param name="cup-cv" value="cup-cv"/>
+          <with-param name="ppem" value="ppem"/>
+        </call-function>
+        <shift compile-if="not( nan(pt-a-sh) ) and pt-a-sh &gt;= 0">
+          <reference>
+            <point num="pt-a"/>
+          </reference>
+          <point num="pt-a-sh"/>
+        </shift>
+          <shift compile-if="nan(pt-a-sh)">
+          <reference>
+            <point num="pt-a"/>
+          </reference>
+        <set ref="pt-a-sh"/> </shift>
+      </code>
+glyphs:
+  o:
+    y:
+      points:
+      - ptid: 15
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 31
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: xheight-overshoot
+        points:
+        - ptid: 23
+          rel: stem
+          round: false
+  a:
+    y:
+      points:
+      - ptid: '{402;484}'
+        pos: xheight-overshoot
+      - ptid: '{94;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{300;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{351;59}'
+            rel: stem
+            round: false
+        - ptid: '{155;62}'
+          rel: stem
+          round: false
+      - ptid: '{392;434}'
+        ref:
+        - '{402;484}'
+        - '{94;-12}'
+        rel: interpolate
+        points:
+        - ptid: '{356;366}'
+          rel: stem
+          round: false
+  b:
+    y:
+      points:
+      - ptid: '{163;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{211;48}'
+          rel: stem
+          round: false
+      - ptid: '{348;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{303;405}'
+          rel: stem
+          round: false
+      - ptid: '{238;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{106;698}'
+          rel: stem
+          round: false
+  c:
+    y:
+      points:
+      - ptid: '{161;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{205;52}'
+          rel: stem
+          round: false
+      - ptid: '{287;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{268;439}'
+          rel: stem
+          round: false
+  d:
+    y:
+      points:
+      - ptid: '{136;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{320;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{371;59}'
+            rel: stem
+            round: false
+        - ptid: '{180;60}'
+          rel: stem
+          round: false
+      - ptid: '{274;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{278;439}'
+          rel: stem
+          round: false
+      - ptid: '{486;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{360;698}'
+          rel: stem
+          round: false
+  e:
+    y:
+      points:
+      - ptid: '{167;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{212;63}'
+          rel: stem
+          round: false
+      - ptid: '{240;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{227;432}'
+          rel: stem
+          round: false
+      - ptid: '{82;211}'
+        ref:
+        - '{240;477}'
+        - '{167;-12}'
+        rel: interpolate
+        points:
+        - ptid: '{82;247}'
+          rel: stem
+          round: false
+  f:
+    y:
+      points:
+      - ptid: '{359;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{330;699}'
+          rel: stem
+          round: false
+      - ptid: '{-76;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{-81;-217}'
+          rel: stem
+          round: false
+      - ptid: '{63;465}'
+        pos: xheight
+        points:
+        - ptid: '{56;422}'
+          rel: stem
+          round: false
+  g:
+    y:
+      points:
+      - ptid: '{203;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{187;442}'
+          rel: stem
+          round: false
+      - ptid: '{156;120}'
+        points:
+        - ptid: '{168;155}'
+          rel: stem
+          round: false
+      - ptid: '{223;156}'
+        ref:
+        - '{156;120}'
+        - '{168;155}'
+        rel: interpolate
+      - ptid: '{116;-262}'
+        pos: lc-descender
+        points:
+        - ptid: '{146;-223}'
+          rel: stem
+          round: false
+      - ptid: '{171;-18}'
+        points:
+        - ptid: '{222;-55}'
+          rel: stem
+          round: false
+      - ptid: '{299;411}'
+        ref:
+        - '{156;120}'
+        - '{203;477}'
+        rel: interpolate
+        points:
+        - ptid: '{310;368}'
+          rel: stem
+          round: false
+  h:
+    y:
+      points:
+      - ptid: '{73;0}'
+        pos: baseline
+      - ptid: '{230;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{243;44}'
+          rel: stem
+          round: false
+      - ptid: '{346;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{325;414}'
+          rel: stem
+          round: false
+      - ptid: '{229;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{100;698}'
+          rel: stem
+          round: false
+  i:
+    y:
+      points:
+      - ptid: '{96;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{146;59}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{241;577}'
+        pos: diacritic-height
+        points:
+        - ptid: '{241;691}'
+          rel: stem
+  j:
+    y:
+      points:
+      - ptid: '{-91;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{-97;-218}'
+          rel: stem
+          round: false
+      - ptid: '{184;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{132;411}'
+          rel: stem
+          round: false
+      - ptid: '{224;577}'
+        pos: diacritic-height
+        points:
+        - ptid: '{220;691}'
+          rel: stem
+  k:
+    y:
+      points:
+      - ptid: '{95;0}'
+        pos: baseline
+      - ptid: '{303;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{328;43}'
+          rel: stem
+          round: false
+      - ptid: '{338;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{319;444}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{92;290}'
+        - '{118;276}'
+        - '{186;287}'
+        ref:
+        - '{338;477}'
+        - '{95;0}'
+        rel: interpolate
+      - ptid: '{229;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{100;698}'
+          rel: stem
+          round: false
+  l:
+    y:
+      points:
+      - ptid: '{83;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{134;59}'
+          rel: stem
+          round: false
+      - ptid: '{249;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{120;698}'
+          rel: stem
+          round: false
+  m:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+        points:
+        - ptid: '{335;0}'
+          rel: shift
+      - ptid: '{539;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{590;59}'
+          rel: stem
+          round: false
+      - ptid: '{192;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{415;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{637;477}'
+            rel: shift
+          - ptid: '{358;411}'
+            rel: stem
+            round: false
+            points:
+            - ptid: '{580;411}'
+              rel: shift
+        - ptid: '{140;411}'
+          rel: stem
+          round: false
+  n:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{318;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{369;59}'
+          rel: stem
+          round: false
+      - ptid: '{419;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{359;411}'
+          rel: stem
+          round: false
+        - ptid: '{195;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{143;411}'
+            rel: stem
+            round: false
+  p:
+    y:
+      points:
+      - ptid: '{83;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{118;-200}'
+          rel: stem
+          round: false
+      - ptid: '{40;-236}'
+        ref:
+        - '{83;-250}'
+        - '{118;-200}'
+        rel: interpolate
+      - ptid: '{192;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{242;48}'
+          rel: stem
+          round: false
+      - ptid: '{335;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;427}'
+          rel: shift
+        - ptid: '{274;405}'
+          rel: stem
+          round: false
+        - ptid: '{202;580}'
+          rel: stem
+          round: false
+  q:
+    y:
+      points:
+      - ptid: '{306;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{343;-200}'
+          rel: stem
+          round: false
+      - ptid: '{259;-238}'
+        ref:
+        - '{306;-250}'
+        - '{343;-200}'
+        rel: interpolate
+      - ptid: '{156;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{196;43}'
+          rel: stem
+          round: false
+      - ptid: '{307;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{290;439}'
+          rel: stem
+          round: false
+        - ptid: '{449;531}'
+          rel: stem
+          round: false
+  r:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+        - ptid: '{375;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{349;403}'
+            rel: stem
+            round: false
+  s:
+    y:
+      points:
+      - ptid: '{80;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{136;59}'
+          rel: stem
+          round: false
+      - ptid: '{259;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{204;416}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{132;234}'
+        - '{203;251}'
+        ref:
+        - '{259;477}'
+        - '{80;-12}'
+        rel: interpolate
+  t:
+    y:
+      points:
+      - ptid: '{103;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{154;79}'
+          rel: stem
+          round: false
+      - ptid: '{78;465}'
+        pos: xheight
+        points:
+        - ptid: '{67;422}'
+          rel: stem
+          round: false
+      - ptid: '{202;668}'
+        round: false
+  u:
+    y:
+      points:
+      - ptid: '{99;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{318;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{375;59}'
+            rel: stem
+            round: false
+        - ptid: '{156;54}'
+          rel: stem
+          round: false
+      - ptid: '{401;465}'
+        pos: xheight
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;411}'
+          rel: stem
+          round: false
+  v:
+    y:
+      points:
+      - ptid: '{102;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{152;59}'
+          rel: stem
+          round: false
+      - ptid: '{339;465}'
+        pos: xheight
+      - ptid: '{193;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+  w:
+    y:
+      points:
+      - ptid: '{102;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{308;-12}'
+          rel: shift
+        - ptid: '{148;59}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{370;59}'
+            rel: shift
+      - ptid: '{443;465}'
+        pos: xheight
+        points:
+        - ptid: '{532;465}'
+          rel: shift
+      - ptid: '{193;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{297;117}'
+        ref:
+        - '{102;-12}'
+        - '{193;477}'
+        rel: interpolate
+  x:
+    y:
+      points:
+      - ptid: '{38;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{394;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{416;43}'
+            rel: stem
+            round: false
+        - ptid: '{61;60}'
+          rel: stem
+          round: false
+      - ptid: '{154;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{142;405}'
+          rel: stem
+          round: false
+        - ptid: '{442;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{441;415}'
+            rel: stem
+            round: false
+  y:
+    y:
+      points:
+      - ptid: '{-29;-249}'
+        pos: lc-descender
+        points:
+        - ptid: '{13;-173}'
+          rel: stem
+          round: false
+      - ptid: '{356;465}'
+        pos: xheight
+      - ptid: '{150;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{119;416}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{252;40}'
+        - '{283;16}'
+        ref:
+        - '{150;477}'
+        - '{-29;-249}'
+        rel: interpolate
+  z:
+    y:
+      points:
+      - ptid: '{188;0}'
+        pos: baseline
+        points:
+        - ptid: '{208;57}'
+          rel: stem
+          round: false
+      - ptid: '{310;465}'
+        pos: xheight
+        points:
+        - ptid: '{352;422}'
+          rel: stem
+          round: false
+      - ptid: '{398;441}'
+        ref:
+        - '{310;465}'
+        - '{352;422}'
+        rel: interpolate
+      - ptid: '{511;-166}'
+        points:
+        - ptid: '{529;-99}'
+          rel: stem
+          round: false
+  A:
+    y:
+      points:
+      - ptid: '{91;0}'
+        pos: baseline
+        points:
+        - ptid: '{576;0}'
+          rel: shift
+        - ptid: '{-22;25}'
+          rel: stem
+          round: false
+          points:
+          - ptid: serif-sh-b
+            rel: shift
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-27;-6}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: baseline
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: serif-sh-a
+        ref: '{-27;-6}'
+        rel: shift
+      - ptid: '{374;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - '{409;635}'
+          - '{417;601}'
+          - '{438;601}'
+          - '{417;594}'
+          rel: shift
+        - ptid: '{369;631}'
+          rel: stem
+          round: false
+      - ptid: '{216;254}'
+        ref:
+        - '{374;660}'
+        - '{91;0}'
+        rel: interpolate
+        points:
+        - ptid: '{239;295}'
+          rel: stem
+          round: false
+    names:
+      serif-sh-a:
+      - '{439;-6}'
+      - '{207;-6}'
+      - '{710;-6}'
+      serif-sh-b:
+      - '{444;25}'
+      - '{212;25}'
+      - '{715;25}'
+  B:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+        points:
+        - ptid: '{7;27}'
+          rel: stem
+          round: false
+        - ptid: '{229;35}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{112;0}'
+          pt-a: '{0;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{240;-4}'
+        ref: '{0;-4}'
+        rel: shift
+      - ptid: '{249;646}'
+        pos: cap-height
+        points:
+        - ptid: '{161;619}'
+          rel: stem
+          round: false
+        - ptid: '{343;611}'
+          rel: stem
+          round: false
+      - ptid: '{75;22}'
+        ref:
+        - '{0;-4}'
+        - '{7;27}'
+        rel: interpolate
+      - ptid: '{203;627}'
+        ref:
+        - '{161;619}'
+        - '{249;646}'
+        rel: interpolate
+      - ptid:
+          base: '{249;646}'
+          pt-a: '{167;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{369;650}'
+        ref: '{167;650}'
+        rel: shift
+      - ptid: '{203;330}'
+        ref:
+        - '{249;646}'
+        - '{112;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{212;371}'
+          rel: stem
+          round: false
+      - ptid: '{395;354}'
+        ref:
+        - '{203;330}'
+        - '{212;371}'
+        rel: interpolate
+  C:
+    y:
+      points:
+      - ptid: '{358;-10}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{397;29}'
+          rel: stem
+          round: false
+      - ptid: '{500;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{495;621}'
+          rel: stem
+          round: false
+  D:
+    y:
+      points:
+      - ptid: '{103;0}'
+        pos: baseline
+        points:
+        - ptid: '{12;27}'
+          rel: stem
+          round: false
+        - ptid: '{241;35}'
+          rel: stem
+          round: false
+      - ptid: '{159;22}'
+        ref:
+        - '{103;0}'
+        - '{12;27}'
+        rel: interpolate
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{5;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{253;-4}'
+        ref: '{5;-4}'
+        rel: shift
+      - ptid: '{240;646}'
+        pos: cap-height
+        points:
+        - ptid: '{152;619}'
+          rel: stem
+          round: false
+        - ptid: '{349;611}'
+          rel: stem
+          round: false
+      - ptid: '{194;627}'
+        ref:
+        - '{240;646}'
+        - '{349;611}'
+        rel: interpolate
+      - ptid:
+          base: '{158;650}'
+          pt-a: '{240;646}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{362;650}'
+        ref: '{158;650}'
+        rel: shift
+  E:
+    y:
+      points:
+      - ptid: '{103;0}'
+        pos: baseline
+        points:
+        - ptid: '{-3;27}'
+          rel: stem
+          round: false
+        - ptid: '{309;41}'
+          rel: stem
+          round: false
+      - ptid: '{158;22}'
+        ref:
+        - '{103;0}'
+        - '{309;41}'
+        rel: interpolate
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{-9;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{423;-11}'
+        ref: '{-9;-4}'
+        rel: shift
+      - ptid: '{240;646}'
+        pos: cap-height
+        points:
+        - ptid: '{255;606}'
+          rel: stem
+          round: false
+        - ptid: '{142;619}'
+          rel: stem
+          round: false
+      - ptid: '{286;627}'
+        ref:
+        - '{255;606}'
+        - '{240;646}'
+        rel: interpolate
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{148;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{592;652}'
+        ref: '{148;650}'
+        rel: shift
+      - ptid: '{190;318}'
+        ref:
+        - '{240;646}'
+        - '{103;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{199;358}'
+          rel: stem
+          round: false
+  F:
+    y:
+      points:
+      - ptid:
+          base: 36
+          pt-a: 38
+        function:
+          nm: cupped-serif-helper
+      - ptid: 34
+        ref: 38
+        rel: shift
+      - ptid:
+          base: 9
+          pt-a: 7
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+      - ptid: 11
+        ref: 7
+        rel: shift
+      - ptid: 23
+        ref:
+        - 9
+        - 3
+        rel: interpolate
+      - ptid: 43
+        ref:
+        - 36
+        - 9
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 44
+          rel: stem
+          round: false
+      - ptid: 39
+        ref: 36
+        rel: stem
+        round: false
+        points:
+        - ptid: 33
+          rel: shift
+  G:
+    y:
+      points:
+      - ptid: 44
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 30
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid:
+          base: 58
+          pt-a: 56
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-G-serif
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 55
+        ref: 58
+        rel: stem
+        round: false
+        points:
+        - ptid: 61
+          rel: shift
+      - ptid: 49
+        ref:
+        - 55
+        - 58
+        rel: interpolate
+      - ptid: 53
+        ref:
+        - 30
+        - 44
+        rel: interpolate
+  H:
+    y:
+      points:
+      - ptid:
+          base: 36
+          pt-a: 38
+        function:
+          nm: cupped-serif-helper
+      - ptid: 39
+        ref: 36
+        rel: stem
+        round: false
+        points:
+        - ptid: serif-bot-sh-b
+          rel: shift
+      - ptid: serif-bot-sh-a
+        ref: 38
+        rel: shift
+      - ptid:
+          base: 15
+          pt-a: 13
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 12
+        ref: 15
+        rel: stem
+        round: false
+        points:
+        - ptid: serif-top-sh-b
+          rel: shift
+      - ptid: serif-top-sh-a
+        ref: 13
+        rel: shift
+      - ptid: 43
+        ref:
+        - 15
+        - 36
+        rel: interpolate
+        points:
+        - ptid: 40
+          rel: stem
+          round: false
+    names:
+      serif-bot-sh-a:
+      - 34
+      - 83
+      - 79
+      serif-bot-sh-b:
+      - 33
+      - 84
+      - 78
+      serif-top-sh-a:
+      - 17
+      - 58
+      - 62
+      serif-top-sh-b:
+      - 18
+      - 57
+      - 63
+  I:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+  J:
+    y:
+      points:
+      - ptid: 34
+        points:
+        - ptid: 4
+          rel: stem
+          round: false
+      - ptid:
+          base: 18
+          pt-a: 16
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 20
+        ref: 16
+        rel: shift
+      - ptid: 15
+        ref: 16
+        rel: stem
+        round: false
+        points:
+        - ptid: 21
+          rel: shift
+  K:
+    y:
+      points:
+      - ptid:
+          base: 33
+          pt-a: 31
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 30
+        ref: 33
+        rel: stem
+        round: false
+        points:
+        - ptid: serif-top-sh-b
+          rel: shift
+      - ptid: serif-top-sh-a
+        ref: 31
+        rel: shift
+      - ptid:
+          base: 16
+          pt-a: 18
+        function:
+          nm: cupped-serif-helper
+      - ptid: 19
+        ref: 16
+        rel: stem
+        round: false
+        points:
+        - ptid: 13
+          rel: shift
+      - ptid: 14
+        ref: 18
+        rel: shift
+      - ptid: 72
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 69
+          rel: stem
+          round: false
+      - ptid: 7
+        ref:
+        - 16
+        - 33
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 42
+          rel: stem
+          round: false
+          points:
+          - ptid: 63
+            rel: shift
+    names:
+      serif-top-sh-a:
+      - 35
+      - 54
+      - 58
+      serif-top-sh-b:
+      - 36
+      - 53
+      - 59
+  L:
+    y:
+      points:
+      - ptid:
+          base: 26
+          pt-a: 28
+        function:
+          nm: cupped-serif-helper
+      - ptid: 29
+        ref: 26
+        rel: stem
+        round: false
+      - ptid: 32
+        ref: 26
+        rel: stem
+        round: false
+      - ptid: 23
+        ref:
+        - 26
+        - 32
+        rel: interpolate
+      - ptid: 39
+        ref: 28
+        rel: shift
+      - ptid:
+          base: 10
+          pt-a: 8
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 12
+        ref: 8
+        rel: shift
+      - ptid: 7
+        ref: 10
+        rel: stem
+        round: false
+        points:
+        - ptid: 13
+          rel: shift
+  M:
+    y:
+      points:
+      - ptid:
+          base: 62
+          pt-a: 64
+        function:
+          nm: cupped-serif-helper
+      - ptid: 65
+        ref: 62
+        rel: stem
+        round: false
+        points:
+        - ptid: serif-bot-sh-b
+          rel: shift
+      - ptid: serif-bot-sh-a
+        ref: 64
+        rel: shift
+      - ptid:
+          base: 8
+          pt-a: 6
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 18
+        ref: 8
+        rel: shift
+      - ptid: 20
+        ref: 6
+        rel: shift
+      - ptid: 5
+        ref: 8
+        rel: stem
+        round: false
+        points:
+        - ptid: 21
+          rel: shift
+      - ptid:
+        - 53
+        - 46
+        - 15
+        - 51
+        ref:
+        - 8
+        - 62
+        rel: interpolate
+    names:
+      serif-bot-sh-a:
+      - 60
+      - 37
+      - 33
+      serif-bot-sh-b:
+      - 59
+      - 38
+      - 32
+  N:
+    y:
+      points:
+      - ptid:
+          base: 7
+          pt-a: 9
+        function:
+          nm: cupped-serif-helper
+      - ptid: 5
+        ref: 9
+        rel: shift
+      - ptid: 10
+        ref: 7
+        rel: stem
+        round: false
+        points:
+        - ptid: 4
+          rel: shift
+      - ptid: 49
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 31
+          rel: shift
+      - ptid:
+          base: 23
+          pt-a: 21
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - 35
+        - 39
+        ref: 21
+        rel: shift
+      - ptid: 37
+        ref: 23
+        rel: shift
+      - ptid: 20
+        ref: 23
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 34
+          rel: shift
+      - ptid: 0
+        ref: 23
+        rel: shift
+  O:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+  P:
+    y:
+      points:
+      - ptid:
+          base: 51
+          pt-a: 53
+        function:
+          nm: cupped-serif-helper
+      - ptid: 54
+        ref: 51
+        rel: stem
+        round: false
+        points:
+        - ptid: 48
+          rel: shift
+      - ptid: 49
+        ref: 53
+        rel: shift
+      - ptid:
+          base: 18
+          pt-a: 16
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 15
+        ref: 18
+        rel: stem
+        round: false
+      - ptid: 10
+        ref: 18
+        rel: stem
+        round: false
+      - ptid: 22
+        ref: 16
+        rel: shift
+      - ptid: 30
+        ref:
+        - 18
+        - 51
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 3
+          rel: stem
+          round: false
+  Q:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+        - ptid: 52
+          rel: stem
+          points:
+          - ptid: 43
+            rel: stem
+            round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 35
+        ref:
+        - 15
+        - 29
+        rel: interpolate
+  R:
+    y:
+      points:
+      - ptid:
+          base: 69
+          pt-a: 71
+        function:
+          nm: cupped-serif-helper
+      - ptid: 72
+        ref: 69
+        rel: stem
+        round: false
+        points:
+        - ptid: 66
+          rel: shift
+      - ptid: 67
+        ref: 71
+        rel: shift
+      - ptid: 48
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 44
+          rel: stem
+          round: false
+      - ptid:
+          base: 19
+          pt-a: 17
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 19
+        rel: stem
+        round: false
+      - ptid: 11
+        ref: 19
+        rel: stem
+        round: false
+      - ptid: 23
+        ref: 17
+        rel: shift
+      - ptid: 31
+        ref:
+        - 19
+        - 69
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 4
+          rel: shift
+      - ptid: 37
+        ref:
+        - 31
+        - 4
+        rel: interpolate
+  S:
+    y:
+      points:
+      - ptid: 55
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 12
+          rel: stem
+          round: false
+      - ptid: 28
+        pos: cap-height-overshoot
+        points:
+        - ptid: 40
+          rel: stem
+          round: false
+      - ptid:
+        - 20
+        - 47
+        ref:
+        - 28
+        - 55
+        rel: interpolate
+  T:
+    y:
+      points:
+      - ptid:
+          base: 40
+          pt-a: 42
+        function:
+          nm: cupped-serif-helper
+      - ptid: 43
+        ref: 40
+        rel: stem
+        round: false
+        points:
+        - ptid: 37
+          rel: shift
+      - ptid: 38
+        ref: 42
+        rel: shift
+      - ptid: 3
+        pos: cap-height
+        points:
+        - ptid: 10
+          rel: stem
+          round: false
+      - ptid: 26
+        ref:
+        - 3
+        - 10
+        rel: interpolate
+  U:
+    y:
+      points:
+      - ptid: 49
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 25
+          rel: stem
+          round: false
+      - ptid:
+          base: 13
+          pt-a: 11
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - 33
+        - 37
+        - 15
+        ref: 11
+        rel: shift
+      - ptid: 10
+        ref: 13
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 32
+          - 38
+          - 16
+          rel: shift
+      - ptid: 35
+        ref: 13
+        rel: shift
+  V:
+    y:
+      points:
+      - ptid: 37
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 18
+          rel: shift
+      - ptid:
+          base: 8
+          pt-a: 6
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 5
+        ref: 8
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 11
+          - 24
+          - 30
+          rel: shift
+      - ptid:
+        - 10
+        - 25
+        - 29
+        ref: 6
+        rel: shift
+      - ptid: 27
+        ref: 8
+        rel: shift
+  W:
+    y:
+      points:
+      - ptid: 26
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 67
+          rel: shift
+      - ptid:
+          base: 11
+          pt-a: 9
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - 13
+        - 36
+        - 40
+        - 55
+        - 59
+        ref: 9
+        rel: shift
+      - ptid:
+        - 38
+        - 57
+        ref: 11
+        rel: shift
+      - ptid: 8
+        ref: 11
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 14
+          - 35
+          - 41
+          - 54
+          - 60
+          rel: shift
+      - ptid:
+        - 20
+        - 48
+        - 21
+        - 22
+        ref:
+        - 11
+        - 26
+        rel: interpolate
+  X:
+    y:
+      points:
+      - ptid:
+          base: 47
+          pt-a: 49
+        function:
+          nm: cupped-serif-helper
+      - ptid: 50
+        ref: 47
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 30
+          - 44
+          - 24
+          rel: shift
+      - ptid:
+        - 29
+        - 45
+        - 25
+        ref: 49
+        rel: shift
+      - ptid: 27
+        ref: 47
+        rel: shift
+      - ptid:
+          base: 12
+          pt-a: 10
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 9
+        ref: 12
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 15
+          - 56
+          - 62
+          rel: shift
+      - ptid: 59
+        ref: 12
+        rel: shift
+      - ptid:
+        - 14
+        - 57
+        - 61
+        ref: 10
+        rel: shift
+      - ptid:
+        - 36
+        - 37
+        - 68
+        - 69
+        ref:
+        - 12
+        - 47
+        rel: interpolate
+  Y:
+    y:
+      points:
+      - ptid:
+          base: 48
+          pt-a: 50
+        function:
+          nm: cupped-serif-helper
+      - ptid: 51
+        ref: 48
+        rel: stem
+        round: false
+        points:
+        - ptid: 45
+          rel: shift
+      - ptid: 46
+        ref: 50
+        rel: shift
+      - ptid:
+          base: 13
+          pt-a: 11
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 10
+        ref: 13
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 16
+          - 29
+          - 35
+          rel: shift
+      - ptid:
+        - 15
+        - 30
+        - 34
+        ref: 11
+        rel: shift
+      - ptid: 32
+        ref: 13
+        rel: shift
+      - ptid:
+        - 6
+        - 22
+        - 39
+        ref:
+        - 13
+        - 48
+        rel: interpolate
+  Z:
+    y:
+      points:
+      - ptid: 37
+        pos: baseline
+        points:
+        - ptid: 25
+          rel: stem
+          round: false
+      - ptid: 18
+        pos: cap-height
+        points:
+        - ptid: 3
+          rel: stem
+          round: false
+  AE:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 32
+          - 54
+          rel: shift
+      - ptid: 51
+        ref: 35
+        rel: stem
+        min: false
+        points:
+        - ptid: 58
+          rel: stem
+          round: false
+      - ptid:
+        - 33
+        - 53
+        - 64
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 9
+          pt-a: 8
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 43
+        ref: 9
+        rel: shift
+      - ptid: 45
+        ref: 8
+        rel: shift
+      - ptid: 7
+        ref: 9
+        rel: stem
+        round: false
+      - ptid: 41
+        ref: 9
+        rel: stem
+        round: false
+      - ptid: 26
+        ref: 9
+        rel: shift
+      - ptid: 79
+        ref:
+        - 35
+        - 9
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 65
+          rel: stem
+          round: false
+      - ptid: 18
+        ref:
+        - 35
+        - 38
+        rel: interpolate
+  zero:
+    y:
+      points:
+      - ptid: '{237;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{247;29}'
+          rel: stem
+          round: false
+      - ptid: '{368;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{356;437}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  one:
+    y:
+      points:
+      - ptid:
+          base: '{149;0}'
+          pt-a: '{44;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{240;-6}'
+        ref: '{44;-6}'
+        rel: shift
+      - ptid: '{53;25}'
+        ref: '{149;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{249;25}'
+          rel: shift
+      - ptid: '{302;489}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{149;423}'
+          rel: stem
+    props:
+      category: Ll
+  two:
+    y:
+      points:
+      - ptid: '{306;0}'
+        pos: baseline
+        points:
+        - ptid: '{219;78}'
+          rel: stem
+          round: false
+      - ptid: '{108;58}'
+        ref:
+        - '{306;0}'
+        - '{219;78}'
+        rel: interpolate
+      - ptid: '{257;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{199;409}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  three:
+    y:
+      points:
+      - ptid: '{272;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{220;415}'
+          rel: stem
+          round: false
+      - ptid: '{10;-173}'
+        points:
+        - ptid: '{21;-133}'
+          rel: stem
+          round: false
+      - ptid: '{72;125}'
+        ref:
+        - '{10;-173}'
+        - '{272;477}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{81;160}'
+          rel: stem
+          round: false
+      - ptid: '{130;145}'
+        ref:
+        - '{72;125}'
+        - '{81;160}'
+        rel: interpolate
+    props:
+      category: Ll
+  four:
+    y:
+      points:
+      - ptid: '{467;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{404;385}'
+          rel: shift
+      - ptid: '{516;10}'
+        points:
+        - ptid: '{345;78}'
+          rel: stem
+          round: false
+        - ptid: '{307;-219}'
+          rel: stem
+    props:
+      category: Ll
+  five:
+    y:
+      points:
+      - ptid: '{54;-125}'
+        points:
+        - ptid: '{50;-92}'
+          rel: stem
+          round: false
+      - ptid: '{322;464}'
+        pos: xheight
+        points:
+        - ptid: '{273;396}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  six:
+    y:
+      points:
+      - ptid: '{208;-10}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{227;30}'
+          rel: stem
+          round: false
+      - ptid: '{587;626}'
+        points:
+        - ptid: '{586;594}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{394;372}'
+        - '{358;334}'
+        ref:
+        - '{587;626}'
+        - '{208;-10}'
+        rel: interpolate
+        points: []
+    props:
+      category: Ll
+  seven:
+    y:
+      points:
+      - ptid: '{396;465}'
+        points:
+        - ptid: '{473;397}'
+          rel: stem
+          round: false
+      - ptid: '{64;-115}'
+    props:
+      category: Ll
+  eight:
+    y:
+      points:
+      - ptid: '{168;-10}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{203;35}'
+          rel: stem
+          round: false
+      - ptid: '{350;626}'
+        points:
+        - ptid: '{324;584}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{217;313}'
+        - '{308;333}'
+        - '{238;293}'
+        - '{281;356}'
+        ref:
+        - '{350;626}'
+        - '{168;-10}'
+        rel: interpolate
+    props:
+      category: Ll
+  nine:
+    y:
+      points:
+      - ptid: '{346;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{327;437}'
+          rel: stem
+          round: false
+      - ptid: '{-26;-134}'
+        points:
+        - ptid: '{-25;-102}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{160;95}'
+        - '{196;133}'
+        ref:
+        - '{-26;-134}'
+        - '{346;477}'
+        rel: interpolate
+    props:
+      category: Ll
+  uni2070.zero:
+    y:
+      points:
+      - ptid: '{223;293}'
+        pos: superscript-baseline-undershoot
+        points:
+        - ptid: '{88;285}'
+          rel: shift
+      - ptid: '{284;636}'
+        pos: superscript-xheight-overshoot
+        points:
+        - ptid: '{415;642}'
+          rel: shift
+        - ptid: '{277;603}'
+          rel: stem
+          round: false
+  uni2070.zero.ss09:
+    y:
+      points:
+      - ptid: '{207;293}'
+        pos: superscript-baseline-undershoot
+        points:
+        - ptid: '{88;286}'
+          rel: shift
+        - ptid: '{217;333}'
+          rel: stem
+          round: false
+      - ptid: '{299;636}'
+        pos: superscript-xheight-overshoot
+        points:
+        - ptid: '{415;643}'
+          rel: shift
+        - ptid: '{288;597}'
+          rel: stem
+          round: false
+  zero.ss09:
+    y:
+      points:
+      - ptid: '{237;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{252;47}'
+          rel: stem
+          round: false
+      - ptid: '{368;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{352;419}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  zero.zero:
+    y:
+      points:
+      - ptid: '{237;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{67;-22}'
+          rel: shift
+        - ptid: '{247;29}'
+          rel: stem
+          round: false
+      - ptid: '{368;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{534;487}'
+          rel: shift
+        - ptid: '{356;437}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  zero.zero.ss09:
+    y:
+      points:
+      - ptid: '{237;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{67;-22}'
+          rel: shift
+        - ptid: '{251;44}'
+          rel: stem
+          round: false
+      - ptid: '{368;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{534;487}'
+          rel: shift
+        - ptid: '{352;422}'
+          rel: stem
+          round: false
+    props:
+      category: Ll
+  Oslash:
+    y:
+      points:
+      - ptid: '{351;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{70;-21}'
+          rel: shift
+        - ptid: '{346;27}'
+          rel: stem
+          round: false
+      - ptid: '{420;658}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{684;670}'
+          rel: shift
+        - ptid: '{429;619}'
+          rel: stem
+          round: false
+  Thorn:
+    y:
+      points:
+      - ptid:
+          base: '{140;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{287;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid: '{-4;25}'
+        ref: '{140;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{292;25}'
+          rel: shift
+      - ptid:
+          base: '{277;646}'
+          pt-a: '{130;650}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{426;650}'
+        ref: '{130;650}'
+        rel: shift
+      - ptid: '{125;619}'
+        ref: '{130;650}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{421;619}'
+          rel: shift
+      - ptid:
+        - '{355;517}'
+        - '{266;142}'
+        ref:
+        - '{277;646}'
+        - '{140;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{312;476}'
+          ref: '{355;517}'
+          rel: stem
+          round: false
+        - ptid: '{275;181}'
+          ref: '{266;142}'
+          rel: stem
+          round: false
+  germandbls:
+    y:
+      points:
+      - ptid: '{308;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{298;705}'
+          rel: stem
+          round: false
+      - ptid: '{224;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{280;59}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{385;492}'
+        - '{313;481}'
+        - '{347;251}'
+        - '{280;231}'
+        ref:
+        - '{224;-12}'
+        - '{308;750}'
+        rel: interpolate
+      - ptid: '{-110;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{-115;-217}'
+          rel: stem
+          round: false
+  ae:
+    y:
+      points:
+      - ptid: '{94;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{415;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{461;69}'
+            rel: stem
+            round: false
+        - ptid: '{155;62}'
+          rel: stem
+          round: false
+      - ptid: '{488;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{477;425}'
+          rel: stem
+          round: false
+      - ptid: '{392;434}'
+        ref:
+        - '{488;477}'
+        - '{477;425}'
+        rel: interpolate
+      - ptid:
+        - '{330;211}'
+        - '{330;246}'
+        ref:
+        - '{415;-12}'
+        - '{488;477}'
+        rel: interpolate
+  eth:
+    y:
+      points:
+      - ptid: '{195;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{202;29}'
+          rel: stem
+          round: false
+      - ptid: '{277;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{277;437}'
+          rel: stem
+          round: false
+      - ptid: '{178;750}'
+        pos: lc-ascender
+      - ptid:
+        - '{147;513}'
+        - '{433;721}'
+        ref:
+        - '{178;750}'
+        - '{277;477}'
+        rel: interpolate
+  oslash:
+    y:
+      points:
+      - ptid: '{171;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{48;-22}'
+          rel: shift
+        - ptid: '{193;39}'
+          rel: stem
+          round: false
+      - ptid: '{257;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{379;488}'
+          rel: shift
+        - ptid: '{233;425}'
+          rel: stem
+          round: false
+  thorn:
+    y:
+      points:
+      - ptid: '{194;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{244;48}'
+          rel: stem
+          round: false
+      - ptid: '{85;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{120;-200}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{118;-222}'
+        - '{42;-236}'
+        ref:
+        - '{120;-200}'
+        - '{85;-250}'
+        rel: interpolate
+      - ptid: '{337;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{276;405}'
+          rel: stem
+          round: false
+      - ptid: '{227;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{106;698}'
+          rel: stem
+          round: false
+  Eth:
+    y:
+      points:
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{5;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{253;-4}'
+        ref: '{5;-4}'
+        rel: shift
+      - ptid: '{12;27}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{241;35}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{158;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{152;619}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{349;611}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{362;650}'
+        ref: '{158;650}'
+        rel: shift
+      - ptid: '{71;303}'
+        ref:
+        - '{240;646}'
+        - '{103;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{83;359}'
+          rel: stem
+          round: false
+  Aring:
+    y:
+      points:
+      - ptid: '{498;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{438;601}'
+          rel: shift
+      - ptid: '{449;635}'
+        ref:
+        - '{498;660}'
+        - '{438;601}'
+        rel: interpolate
+        points:
+        - ptid: '{455;664}'
+          rel: stem
+          round: false
+      - ptid: '{485;804}'
+        points:
+        - ptid: '{479;775}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-27;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{207;-6}'
+        - '{439;-6}'
+        - '{710;-6}'
+        ref: '{-27;-6}'
+        rel: shift
+      - ptid: '{-22;25}'
+        ref: '{91;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{444;25}'
+          - '{212;25}'
+          - '{715;25}'
+          rel: shift
+      - ptid: '{576;0}'
+        ref: '{91;0}'
+        rel: shift
+      - ptid: '{216;254}'
+        ref:
+        - '{91;0}'
+        - '{498;660}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{239;295}'
+          rel: stem
+          round: false
+  Aogonek:
+    y:
+      points:
+      - ptid: '{403;-253}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{452;-203}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-27;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{207;-6}'
+        - '{710;-6}'
+        ref: '{-27;-6}'
+        rel: shift
+      - ptid: '{-22;25}'
+        ref: '{91;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{212;25}'
+          - '{715;25}'
+          rel: shift
+      - ptid: '{576;0}'
+        ref: '{91;0}'
+        rel: shift
+      - ptid: '{498;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{438;600}'
+          rel: shift
+      - ptid: '{216;254}'
+        ref:
+        - '{498;660}'
+        - '{91;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{239;295}'
+          rel: stem
+          round: false
+  aogonek:
+    y:
+      points:
+      - ptid: '{402;484}'
+        pos: xheight-overshoot
+      - ptid: '{94;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{300;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{351;59}'
+            rel: stem
+            round: false
+        - ptid: '{155;62}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{392;434}'
+        - '{356;366}'
+        - '{323;191}'
+        - '{293;111}'
+        ref:
+        - '{94;-12}'
+        - '{402;484}'
+        rel: interpolate
+  Eogonek:
+    y:
+      points:
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{-9;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{148;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{458;606}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{142;619}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{286;627}'
+        ref:
+        - '{240;646}'
+        - '{458;606}'
+        rel: interpolate
+      - ptid: '{-3;27}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{309;41}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{158;22}'
+        ref:
+        - '{103;0}'
+        - '{309;41}'
+        rel: interpolate
+      - ptid: '{272;-253}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{321;-203}'
+          rel: stem
+          round: false
+      - ptid: '{190;318}'
+        ref:
+        - '{103;0}'
+        - '{240;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{199;358}'
+          rel: stem
+          round: false
+  eogonek:
+    y:
+      points:
+      - ptid: '{167;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{212;63}'
+          rel: stem
+          round: false
+      - ptid: '{129;-253}'
+        pos: lc-descender
+        points:
+        - ptid: '{174;-203}'
+          rel: stem
+          round: false
+      - ptid: '{240;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{227;432}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{82;211}'
+        - '{82;247}'
+        ref:
+        - '{240;477}'
+        - '{167;-12}'
+        rel: interpolate
+  iogonek:
+    y:
+      points:
+      - ptid: '{96;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{146;59}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{191;577}'
+        pos: diacritic-height
+        points:
+        - ptid: '{191;690}'
+          rel: stem
+          dist: serif-undershoot
+      - ptid: '{46;-253}'
+        pos: lc-descender
+        points:
+        - ptid: '{91;-203}'
+          rel: stem
+          round: false
+  dotlessi:
+    y:
+      points:
+      - ptid: '{96;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{146;59}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+  Lslash:
+    y:
+      points:
+      - ptid:
+          base: '{105;0}'
+          pt-a: '{-7;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{419;-11}'
+        ref: '{-7;-6}'
+        rel: shift
+      - ptid: '{308;41}'
+        ref: '{105;0}'
+        rel: stem
+        round: false
+      - ptid: '{163;22}'
+        ref:
+        - '{105;0}'
+        - '{308;41}'
+        rel: interpolate
+      - ptid: '{-1;25}'
+        ref: '{105;0}'
+        rel: stem
+        round: false
+      - ptid:
+          base: '{263;646}'
+          pt-a: '{134;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{393;650}'
+        ref: '{134;650}'
+        rel: shift
+      - ptid: '{129;619}'
+        ref: '{263;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{388;619}'
+          rel: shift
+      - ptid:
+        - '{40;217}'
+        - '{430;463}'
+        ref:
+        - '{263;646}'
+        - '{105;0}'
+        rel: interpolate
+  lslash:
+    y:
+      points:
+      - ptid: '{81;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{132;59}'
+          rel: stem
+          round: false
+      - ptid: '{247;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{118;698}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{28;316}'
+        - '{268;479}'
+        ref:
+        - '{247;750}'
+        - '{81;-12}'
+        rel: interpolate
+  OE:
+    y:
+      points:
+      - ptid: '{741;646}'
+        pos: cap-height
+        points:
+        - ptid: '{691;646}'
+          rel: shift
+        - ptid: '{908;606}'
+          rel: stem
+          round: false
+      - ptid: '{604;0}'
+        pos: baseline
+        points:
+        - ptid: '{554;0}'
+          rel: shift
+        - ptid: '{759;41}'
+          rel: stem
+          round: false
+      - ptid: '{641;318}'
+        ref:
+        - '{604;0}'
+        - '{741;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{650;358}'
+          rel: stem
+          round: false
+      - ptid: '{344;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{348;27}'
+          rel: stem
+          round: false
+      - ptid: '{420;658}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{438;619}'
+          rel: stem
+          round: false
+  oe:
+    y:
+      points:
+      - ptid: '{171;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{452;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{498;69}'
+            rel: stem
+            round: false
+        - ptid: '{193;39}'
+          rel: stem
+          round: false
+      - ptid: '{257;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{525;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{514;425}'
+            rel: stem
+            round: false
+        - ptid: '{233;425}'
+          rel: stem
+          round: false
+  uogonek:
+    y:
+      points:
+      - ptid: '{401;465}'
+        pos: xheight
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;411}'
+          rel: stem
+          round: false
+      - ptid: '{99;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{156;54}'
+          rel: stem
+          round: false
+        - ptid: '{318;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{375;59}'
+            rel: stem
+            round: false
+      - ptid: '{270;-253}'
+        pos: lc-descender
+        points:
+        - ptid: '{315;-203}'
+          rel: stem
+          round: false
+  longs:
+    y:
+      points:
+      - ptid: '{359;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{330;699}'
+          rel: stem
+          round: false
+      - ptid: '{-76;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{-81;-217}'
+          rel: stem
+          round: false
+  uni01EB:
+    y:
+      points:
+      - ptid: '{171;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{193;39}'
+          rel: stem
+          round: false
+      - ptid: '{257;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{233;425}'
+          rel: stem
+          round: false
+      - ptid: '{135;-253}'
+        pos: lc-descender
+        points:
+        - ptid: '{174;-203}'
+          rel: stem
+          round: false
+  uni0237:
+    y:
+      points:
+      - ptid: '{-91;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{-97;-218}'
+          rel: stem
+          round: false
+      - ptid: '{184;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{132;411}'
+          rel: stem
+          round: false
+  Alpha:
+    y:
+      points:
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-27;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{576;0}'
+        ref: '{91;0}'
+        rel: shift
+      - ptid:
+        - '{439;-6}'
+        - '{207;-6}'
+        - '{710;-6}'
+        ref: '{-27;-6}'
+        rel: shift
+      - ptid: '{374;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - '{409;635}'
+          - '{417;601}'
+          - '{417;594}'
+          - '{438;601}'
+          rel: shift
+      - ptid: '{216;254}'
+        ref:
+        - '{374;660}'
+        - '{91;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{239;295}'
+          rel: stem
+          round: false
+  Gamma:
+    y:
+      points:
+      - ptid:
+          base: '{115;0}'
+          pt-a: '{-25;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{-20;25}'
+        ref: '{115;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{255;25}'
+          rel: shift
+      - ptid: '{255;-6}'
+        ref: '{-25;-6}'
+        rel: shift
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{129;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{123;619}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{443;606}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{286;627}'
+        ref:
+        - '{240;646}'
+        - '{443;606}'
+        rel: interpolate
+  uni0394:
+    y:
+      points:
+      - ptid: '{528;0}'
+        pos: baseline
+        points:
+        - ptid:
+          - '{483;0}'
+          - '{61;0}'
+          rel: shift
+        - ptid: '{521;65}'
+          rel: stem
+          round: false
+      - ptid: '{403;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - '{435;629}'
+          - '{412;619}'
+          rel: shift
+  Epsilon:
+    y:
+      points:
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{-9;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{-3;27}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{309;41}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{423;-11}'
+        ref: '{-9;-4}'
+        rel: shift
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{148;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{458;606}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{142;619}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{286;627}'
+        ref:
+        - '{240;646}'
+        - '{458;606}'
+        rel: interpolate
+      - ptid: '{190;318}'
+        ref:
+        - '{103;0}'
+        - '{240;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{199;358}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{427;361}'
+            rel: shift
+        - ptid: '{416;318}'
+          rel: shift
+  Eta:
+    y:
+      points:
+      - ptid:
+          base: '{111;0}'
+          pt-a: '{2;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{566;0}'
+        ref: '{111;0}'
+        rel: shift
+      - ptid:
+        - '{217;-6}'
+        - '{457;-6}'
+        - '{672;-6}'
+        ref: '{2;-6}'
+        rel: shift
+      - ptid: '{7;25}'
+        ref: '{111;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{222;25}'
+          - '{462;25}'
+          - '{677;25}'
+          rel: shift
+      - ptid:
+          base: '{247;646}'
+          pt-a: '{141;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{703;646}'
+        ref: '{247;646}'
+        rel: shift
+      - ptid:
+        - '{355;650}'
+        - '{596;650}'
+        - '{811;650}'
+        ref: '{141;650}'
+        rel: shift
+      - ptid: '{136;619}'
+        ref: '{247;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{350;619}'
+          - '{591;619}'
+          - '{806;619}'
+          rel: shift
+      - ptid: '{172;297}'
+        ref:
+        - '{247;646}'
+        - '{111;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{181;338}'
+          rel: stem
+          round: false
+  Theta:
+    y:
+      points:
+      - ptid: '{351;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{346;27}'
+          rel: stem
+          round: false
+      - ptid: '{420;658}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{429;619}'
+          rel: stem
+          round: false
+      - ptid: '{258;312}'
+        ref:
+        - '{420;658}'
+        - '{351;-12}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{269;353}'
+          rel: stem
+          round: false
+          points:
+          - ptid:
+            - '{292;353}'
+            - '{500;353}'
+            rel: shift
+        - ptid:
+          - '{281;312}'
+          - '{489;312}'
+          rel: shift
+  Iota:
+    y:
+      points:
+      - ptid:
+          base: '{157;0}'
+          pt-a: '{2;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{309;-6}'
+        ref: '{2;-6}'
+        rel: shift
+      - ptid: '{7;25}'
+        ref: '{157;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{314;25}'
+          rel: shift
+      - ptid:
+          base: '{289;646}'
+          pt-a: '{136;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{443;650}'
+        ref: '{136;650}'
+        rel: shift
+      - ptid: '{131;619}'
+        ref: '{289;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{438;619}'
+          rel: shift
+  Lambda:
+    y:
+      points:
+      - ptid:
+          base: '{132;0}'
+          pt-a: '{13;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{464;-6}'
+        - '{246;-6}'
+        - '{735;-6}'
+        ref: '{13;-6}'
+        rel: shift
+      - ptid: '{602;0}'
+        ref: '{132;0}'
+        rel: shift
+      - ptid: '{436;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - '{467;631}'
+          - '{480;597}'
+          - '{491;619}'
+          - '{514;629}'
+          rel: shift
+  Xi:
+    y:
+      points:
+      - ptid: '{101;15}'
+        points:
+        - ptid: '{140;79}'
+          rel: stem
+          round: false
+      - ptid: '{251;286}'
+        points:
+        - ptid: '{290;350}'
+          rel: stem
+          round: false
+      - ptid: '{208;568}'
+        points:
+        - ptid: '{246;632}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{263;623}'
+        - '{242;582}'
+        - '{661;582}'
+        - '{682;623}'
+        ref:
+        - '{246;632}'
+        - '{208;568}'
+        rel: interpolate
+      - ptid:
+        - '{305;339}'
+        - '{284;298}'
+        - '{522;298}'
+        - '{543;339}'
+        ref:
+        - '{290;350}'
+        - '{251;286}'
+        rel: interpolate
+      - ptid:
+        - '{159;71}'
+        - '{138;30}'
+        - '{576;71}'
+        - '{555;30}'
+        ref:
+        - '{140;79}'
+        - '{101;15}'
+        rel: interpolate
+  Omicron:
+    y:
+      points:
+      - ptid: '{351;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{346;27}'
+          rel: stem
+          round: false
+      - ptid: '{420;658}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{429;619}'
+          rel: stem
+          round: false
+  Pi:
+    y:
+      points:
+      - ptid:
+          base: '{115;0}'
+          pt-a: '{2;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{420;-6}'
+        - '{224;-6}'
+        - '{642;-6}'
+        ref: '{2;-6}'
+        rel: shift
+      - ptid: '{533;0}'
+        ref: '{115;0}'
+        rel: shift
+      - ptid: '{8;25}'
+        ref: '{115;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{426;25}'
+          - '{230;25}'
+          - '{648;25}'
+          rel: shift
+      - ptid:
+          base: '{254;646}'
+          pt-a: '{144;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{136;619}'
+        ref: '{254;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{776;619}'
+          rel: shift
+      - ptid: '{784;650}'
+        ref: '{144;650}'
+        rel: shift
+      - ptid: '{458;619}'
+        ref: '{254;646}'
+        rel: stem
+        round: false
+  Rho:
+    y:
+      points:
+      - ptid:
+          base: '{133;0}'
+          pt-a: '{2;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{261;-6}'
+        ref: '{2;-6}'
+        rel: shift
+      - ptid: '{7;25}'
+        ref: '{133;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{266;25}'
+          rel: shift
+      - ptid:
+          base: '{246;646}'
+          pt-a: '{156;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{335;611}'
+        ref: '{246;646}'
+        rel: stem
+        round: false
+      - ptid: '{292;627}'
+        ref:
+        - '{246;646}'
+        - '{335;611}'
+        rel: interpolate
+      - ptid: '{150;619}'
+        ref: '{246;646}'
+        rel: stem
+        round: false
+      - ptid: '{333;219}'
+        ref:
+        - '{133;0}'
+        - '{246;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{316;258}'
+          rel: stem
+          round: false
+  Sigma:
+    y:
+      points:
+      - ptid: '{217;646}'
+        pos: cap-height
+        points:
+        - ptid: '{439;606}'
+          rel: stem
+          round: false
+      - ptid: '{44;0}'
+        pos: baseline
+        points:
+        - ptid: '{268;41}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{321;310}'
+        - '{400;342}'
+        ref:
+        - '{44;0}'
+        - '{217;646}'
+        rel: interpolate
+  Upsilon:
+    y:
+      points:
+      - ptid:
+          base: '{382;0}'
+          pt-a: '{232;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{240;25}'
+        ref: '{382;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{536;25}'
+          rel: shift
+      - ptid: '{528;-6}'
+        ref: '{232;-6}'
+        rel: shift
+      - ptid: '{314;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{261;593}'
+          rel: stem
+          round: false
+        - ptid: '{892;660}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{891;613}'
+            rel: stem
+            round: false
+  Phi:
+    y:
+      points:
+      - ptid:
+          base: '{315;0}'
+          pt-a: '{160;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{467;-6}'
+        ref: '{160;-6}'
+        rel: shift
+      - ptid: '{165;25}'
+        ref: '{315;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{472;25}'
+          rel: shift
+      - ptid:
+          base: '{447;646}'
+          pt-a: '{294;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{289;619}'
+        ref: '{447;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{596;619}'
+          rel: shift
+      - ptid: '{601;650}'
+        ref: '{294;650}'
+        rel: shift
+      - ptid:
+        - '{445;550}'
+        - '{324;99}'
+        ref:
+        - '{447;646}'
+        - '{315;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{350;143}'
+          ref: '{324;99}'
+          rel: stem
+          round: false
+        - ptid: '{417;506}'
+          ref: '{445;550}'
+          rel: stem
+          round: false
+  Psi:
+    y:
+      points:
+      - ptid:
+          base: '{383;0}'
+          pt-a: '{228;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{233;25}'
+        ref: '{383;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{540;25}'
+          rel: shift
+      - ptid: '{535;-6}'
+        ref: '{228;-6}'
+        rel: shift
+      - ptid:
+          base: '{515;646}'
+          pt-a: '{362;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{357;619}'
+        ref: '{515;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{664;619}'
+          rel: shift
+      - ptid: '{669;650}'
+        ref: '{362;650}'
+        rel: shift
+      - ptid: '{396;237}'
+        ref:
+        - '{515;646}'
+        - '{383;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{407;276}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{463;276}'
+            rel: shift
+        - ptid: '{452;237}'
+          rel: shift
+      - ptid: '{225;606}'
+        ref:
+        - '{515;646}'
+        - '{383;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{196;569}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{831;569}'
+            rel: shift
+        - ptid: '{822;606}'
+          rel: shift
+  uni03A9:
+    y:
+      points:
+      - ptid: '{105;0}'
+        pos: baseline
+        points:
+        - ptid: '{544;0}'
+          rel: shift
+        - ptid: '{35;39}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{635;39}'
+            rel: shift
+      - ptid:
+        - '{208;9}'
+        - '{446;9}'
+        ref:
+        - '{105;0}'
+        - '{35;39}'
+        rel: interpolate
+      - ptid: '{504;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{490;616}'
+          rel: stem
+          round: false
+  alpha:
+    y:
+      points:
+      - ptid: '{136;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{363;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{406;59}'
+            rel: stem
+            round: false
+        - ptid: '{157;26}'
+          rel: stem
+          round: false
+      - ptid: '{275;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{272;439}'
+          rel: stem
+          round: false
+        - ptid: '{489;467}'
+          rel: stem
+          min: false
+  beta:
+    y:
+      points:
+      - ptid: '{63;-250}'
+        pos: lc-descender
+      - ptid: '{161;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{180;30}'
+          rel: stem
+          round: false
+      - ptid: '{409;750}'
+        pos: lc-ascender
+      - ptid:
+        - '{257;378}'
+        - '{313;448}'
+        - '{332;437}'
+        - '{303;403}'
+        ref:
+        - '{409;750}'
+        - '{161;-12}'
+        rel: interpolate
+  gamma:
+    y:
+      points:
+      - ptid: '{137;-250}'
+        pos: lc-descender
+      - ptid: '{180;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{492;476}'
+          rel: shift
+        - ptid: '{128;411}'
+          rel: stem
+          round: false
+      - ptid: '{231;69}'
+        ref:
+        - '{180;477}'
+        - '{137;-250}'
+        rel: interpolate
+  delta:
+    y:
+      points:
+      - ptid: '{157;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{182;25}'
+          rel: stem
+          round: false
+      - ptid: '{286;449}'
+        points:
+        - ptid: '{262;411}'
+          rel: stem
+          round: false
+      - ptid: '{298;750}'
+        pos: lc-ascender
+      - ptid: '{340;675}'
+        ref:
+        - '{298;750}'
+        - '{286;449}'
+        rel: interpolate
+  epsilon:
+    y:
+      points:
+      - ptid: '{152;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{201;52}'
+          rel: stem
+          round: false
+      - ptid: '{299;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{266;434}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{235;213}'
+        - '{263;283}'
+        ref:
+        - '{299;477}'
+        - '{152;-12}'
+        rel: interpolate
+        round: true
+      - ptid: '{136;240}'
+        ref:
+        - '{263;283}'
+        - '{235;213}'
+        rel: interpolate
+  zeta:
+    y:
+      points:
+      - ptid: '{167;-169}'
+        points:
+        - ptid: '{161;-142}'
+          rel: shift
+      - ptid: '{508;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{512;712}'
+          rel: shift
+      - ptid: '{330;677}'
+        ref:
+        - '{508;750}'
+        - '{167;-169}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{232;623}'
+          rel: stem
+          round: false
+  eta:
+    y:
+      points:
+      - ptid: '{283;-250}'
+        pos: lc-descender
+      - ptid: '{116;0}'
+        pos: baseline
+      - ptid: '{439;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{195;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{143;411}'
+            rel: stem
+            round: false
+        - ptid: '{379;411}'
+          rel: stem
+          round: false
+  theta:
+    y:
+      points:
+      - ptid: '{139;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{151;25}'
+          rel: stem
+          round: false
+      - ptid: '{334;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{325;717}'
+          rel: stem
+          round: false
+      - ptid: '{119;368}'
+        ref:
+        - '{334;750}'
+        - '{139;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{131;412}'
+          rel: stem
+          round: false
+  iota:
+    y:
+      points:
+      - ptid: '{58;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{108;59}'
+          rel: stem
+          round: false
+      - ptid: '{136;466}'
+        pos: xheight
+  kappa:
+    y:
+      points:
+      - ptid: '{116;0}'
+        pos: baseline
+      - ptid: '{335;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{363;40}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+        - ptid: '{464;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{400;394}'
+            rel: stem
+            round: false
+      - ptid:
+        - '{116;187}'
+        - '{199;256}'
+        ref:
+        - '{195;477}'
+        - '{116;0}'
+        rel: interpolate
+  lambda:
+    y:
+      points:
+      - ptid: '{73;0}'
+        pos: baseline
+      - ptid: '{350;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{388;46}'
+          rel: stem
+          round: false
+      - ptid: '{280;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{260;695}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{356;486}'
+        - '{333;502}'
+        - '{325;433}'
+        ref:
+        - '{280;750}'
+        - '{73;0}'
+        rel: interpolate
+  uni03BC:
+    y:
+      points:
+      - ptid: '{152;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{206;40}'
+          rel: stem
+          round: false
+        - ptid: '{350;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{387;47}'
+            rel: stem
+            round: false
+      - ptid: '{152;465}'
+        pos: xheight
+        points:
+        - ptid: '{397;465}'
+          rel: shift
+      - ptid: '{53;-250}'
+        pos: lc-descender
+  nu:
+    y:
+      points:
+      - ptid: '{199;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid:
+          - '{222;31}'
+          - '{211;43}'
+          rel: shift
+      - ptid: '{180;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{128;411}'
+          rel: stem
+          round: false
+      - ptid: '{420;465}'
+        pos: xheight
+  xi:
+    y:
+      points:
+      - ptid: '{522;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{511;709}'
+          rel: stem
+          round: false
+        - ptid: '{323;684}'
+          rel: stem
+          points:
+          - ptid: '{231;634}'
+            rel: stem
+            round: false
+      - ptid: '{213;-171}'
+      - ptid:
+        - '{187;360}'
+        - '{223;385}'
+        - '{224;349}'
+        ref:
+        - '{213;-171}'
+        - '{522;750}'
+        rel: interpolate
+  omicron:
+    y:
+      points:
+      - ptid: '{171;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{193;39}'
+          rel: stem
+          round: false
+      - ptid: '{257;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{233;425}'
+          rel: stem
+          round: false
+  pi:
+    y:
+      points:
+      - ptid: '{159;466}'
+        pos: xheight
+        points:
+        - ptid: '{123;416}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{203;436}'
+        - '{385;438}'
+        ref:
+        - '{159;466}'
+        - '{123;416}'
+        rel: interpolate
+      - ptid: '{84;0}'
+        pos: baseline
+      - ptid: '{314;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{364;59}'
+          rel: stem
+          round: false
+  rho:
+    y:
+      points:
+      - ptid: '{190;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{224;26}'
+          rel: stem
+          round: false
+      - ptid: '{308;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{288;439}'
+          rel: stem
+          round: false
+      - ptid: '{43;-250}'
+        pos: lc-descender
+  uni03C2:
+    y:
+      points:
+      - ptid: '{139;-187}'
+        points:
+        - ptid: '{134;-152}'
+          rel: stem
+          round: false
+      - ptid: '{321;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{284;440}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{141;25}'
+        - '{205;47}'
+        ref:
+        - '{139;-187}'
+        - '{321;477}'
+        rel: interpolate
+  sigma:
+    y:
+      points:
+      - ptid: '{322;466}'
+        pos: xheight
+        points:
+        - ptid: '{290;416}'
+          rel: stem
+          round: false
+      - ptid: '{169;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{180;24}'
+          rel: stem
+          round: false
+  tau:
+    y:
+      points:
+      - ptid: '{106;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{156;59}'
+          rel: stem
+          round: false
+      - ptid: '{159;466}'
+        pos: xheight
+        points:
+        - ptid: '{206;415}'
+          rel: stem
+          round: false
+      - ptid: '{252;438}'
+        ref:
+        - '{159;466}'
+        - '{206;415}'
+        rel: interpolate
+  upsilon:
+    y:
+      points:
+      - ptid: '{202;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{224;24}'
+          rel: stem
+          round: false
+      - ptid: '{190;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{138;411}'
+          rel: stem
+          round: false
+        - ptid: '{448;489}'
+          rel: stem
+          min: false
+  phi:
+    y:
+      points:
+      - ptid: '{259;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{269;22}'
+          rel: stem
+          round: false
+      - ptid: '{231;-250}'
+        pos: lc-descender
+      - ptid: '{424;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{416;446}'
+          rel: stem
+          round: false
+        - ptid: '{278;476}'
+          rel: stem
+          min: false
+  chi:
+    y:
+      points:
+      - ptid: '{152;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{100;411}'
+          rel: stem
+          round: false
+      - ptid: '{396;466}'
+        pos: xheight
+      - ptid: '{253;-262}'
+        pos: lc-descender
+        points:
+        - ptid: '{297;-204}'
+          rel: stem
+          round: false
+      - ptid: '{-41;-250}'
+        pos: lc-descender
+  psi:
+    y:
+      points:
+      - ptid: '{265;-250}'
+        pos: lc-descender
+      - ptid: '{410;639}'
+      - ptid: '{190;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{138;411}'
+          rel: stem
+          round: false
+        - ptid: '{579;489}'
+          rel: stem
+          min: false
+      - ptid: '{268;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{289;24}'
+          rel: stem
+          round: false
+  omega:
+    y:
+      points:
+      - ptid: '{117;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{348;-12}'
+          rel: shift
+        - ptid: '{147;46}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{351;46}'
+            rel: shift
+      - ptid: '{267;470}'
+        pos: xheight
+        points:
+        - ptid: '{456;471}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{444;446}'
+            rel: stem
+            round: false
+        - ptid: '{270;444}'
+          rel: stem
+          round: false
+      - ptid: '{341;384}'
+        ref:
+        - '{267;470}'
+        - '{117;-12}'
+        rel: interpolate
+        round: true
+      - ptid:
+        - '{264;154}'
+        - '{296;154}'
+        - '{269;148}'
+        - '{287;132}'
+        ref:
+        - '{117;-12}'
+        - '{267;470}'
+        rel: interpolate
+  uni0402:
+    y:
+      points:
+      - ptid:
+          base: '{331;0}'
+          pt-a: '{181;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{513;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{496;28}'
+          rel: stem
+          round: false
+      - ptid: '{251;646}'
+        pos: cap-height
+        points:
+        - ptid: '{256;599}'
+          rel: stem
+          round: false
+      - ptid: '{416;627}'
+        ref:
+        - '{251;646}'
+        - '{256;599}'
+        rel: interpolate
+      - ptid: '{541;337}'
+        pos: superscript-baseline-undershoot
+        points:
+        - ptid: '{508;301}'
+          rel: stem
+          round: false
+  uni0404:
+    y:
+      points:
+      - ptid: '{415;-10}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{451;29}'
+          rel: stem
+          round: false
+      - ptid: '{564;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{549;621}'
+          rel: stem
+          round: false
+      - ptid: '{199;318}'
+        ref:
+        - '{564;660}'
+        - '{415;-10}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{208;359}'
+          rel: stem
+          round: false
+  uni0409:
+    y:
+      points:
+      - ptid:
+          base: '{412;646}'
+          pt-a: '{303;650}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{510;614}'
+        ref: '{412;646}'
+        rel: stem
+        round: false
+      - ptid: '{297;621}'
+        ref: '{412;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{760;621}'
+          rel: shift
+      - ptid: '{766;650}'
+        ref: '{303;650}'
+        rel: shift
+      - ptid:
+          base: '{497;0}'
+          pt-a: '{389;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{649;-4}'
+        ref: '{389;-4}'
+        rel: shift
+      - ptid: '{64;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{91;47}'
+          rel: stem
+          round: false
+      - ptid: '{711;339}'
+        ref:
+        - '{412;646}'
+        - '{497;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{705;298}'
+          rel: stem
+          round: false
+      - ptid: '{396;27}'
+        ref: '{497;0}'
+        rel: stem
+        round: false
+      - ptid: '{641;35}'
+        ref: '{497;0}'
+        rel: stem
+        round: false
+  uni040A:
+    y:
+      points:
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{359;-4}'
+        - '{213;-6}'
+        - '{619;-4}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid:
+          base: '{241;646}'
+          pt-a: '{130;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{609;646}'
+        ref: '{241;646}'
+        rel: shift
+      - ptid:
+        - '{352;650}'
+        - '{498;650}'
+        - '{720;650}'
+        ref: '{130;650}'
+        rel: shift
+      - ptid: '{124;619}'
+        ref: '{241;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{346;619}'
+          - '{492;619}'
+          - '{714;619}'
+          rel: shift
+      - ptid: '{651;339}'
+        ref:
+        - '{241;646}'
+        - '{103;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{645;298}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{497;298}'
+            rel: shift
+        - ptid: '{505;339}'
+          rel: shift
+      - ptid: '{-2;25}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{220;25}'
+          - '{366;27}'
+          rel: shift
+      - ptid: '{467;0}'
+        ref: '{103;0}'
+        rel: stem
+        min: false
+        points:
+        - ptid: '{611;35}'
+          rel: stem
+          round: false
+  uni040B:
+    y:
+      points:
+      - ptid:
+          base: '{271;0}'
+          pt-a: '{134;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{610;0}'
+        ref: '{271;0}'
+        rel: shift
+      - ptid:
+        - '{484;-5}'
+        - '{400;-6}'
+        - '{741;-5}'
+        ref: '{134;-6}'
+        rel: shift
+      - ptid: '{141;25}'
+        ref: '{271;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{490;26}'
+          - '{407;25}'
+          - '{747;26}'
+          rel: shift
+      - ptid: '{191;646}'
+        pos: cap-height
+        points:
+        - ptid: '{196;599}'
+          rel: stem
+          round: false
+      - ptid: '{356;627}'
+        ref:
+        - '{191;646}'
+        - '{196;599}'
+        rel: interpolate
+      - ptid: '{599;437}'
+        ref:
+        - '{191;646}'
+        - '{271;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{536;382}'
+          rel: stem
+          round: false
+  uni040F:
+    y:
+      points:
+      - ptid:
+          base: '{103;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{-2;25}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{618;25}'
+          rel: shift
+      - ptid: '{308;25}'
+        ref: '{103;0}'
+        rel: stem
+        round: false
+      - ptid: '{611;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid:
+          base: '{241;646}'
+          pt-a: '{130;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{124;619}'
+        ref: '{241;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{346;619}'
+          - '{522;619}'
+          - '{744;619}'
+          rel: shift
+      - ptid: '{639;646}'
+        ref: '{241;646}'
+        rel: shift
+      - ptid:
+        - '{352;650}'
+        - '{528;650}'
+        - '{750;650}'
+        ref: '{130;650}'
+        rel: shift
+  uni0411:
+    y:
+      points:
+      - ptid:
+          base: '{167;0}'
+          pt-a: '{59;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{295;-4}'
+        ref: '{59;-4}'
+        rel: shift
+      - ptid: '{66;28}'
+        ref: '{167;0}'
+        rel: stem
+        round: false
+      - ptid: '{284;35}'
+        ref: '{167;0}'
+        rel: stem
+        round: false
+      - ptid:
+          base: '{310;646}'
+          pt-a: '{208;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{201;619}'
+        ref: '{310;646}'
+        rel: stem
+        round: false
+      - ptid: '{352;627}'
+        ref:
+        - '{310;646}'
+        - '{201;619}'
+        rel: interpolate
+      - ptid: '{320;606}'
+        ref: '{310;646}'
+        rel: stem
+        round: false
+      - ptid: '{363;371}'
+        ref:
+        - '{310;646}'
+        - '{167;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{357;330}'
+          rel: stem
+          round: false
+      - ptid: '{644;652}'
+        ref: '{208;650}'
+        rel: shift
+  uni0413:
+    y:
+      points:
+      - ptid:
+          base: '{124;0}'
+          pt-a: '{-25;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{271;-6}'
+        ref: '{-25;-6}'
+        rel: shift
+      - ptid: '{-20;25}'
+        ref: '{124;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{276;25}'
+          rel: shift
+      - ptid:
+          base: '{240;646}'
+          pt-a: '{129;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{577;652}'
+        ref: '{129;650}'
+        rel: shift
+      - ptid: '{123;619}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+      - ptid: '{443;606}'
+        ref: '{240;646}'
+        rel: stem
+        round: false
+  uni0414:
+    y:
+      points:
+      - ptid: '{409;0}'
+        pos: baseline
+        points:
+        - ptid: '{274;30}'
+          rel: stem
+          round: false
+        - ptid: '{530;-191}'
+          rel: stem
+          points:
+          - ptid: '{-37;-191}'
+            rel: shift
+        - ptid: '{599;22}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{-14;22}'
+            rel: shift
+      - ptid:
+          base: '{379;646}'
+          pt-a: '{271;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{734;650}'
+        ref: '{271;650}'
+        rel: shift
+      - ptid: '{265;621}'
+        ref: '{379;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{728;621}'
+          rel: shift
+      - ptid: '{478;614}'
+        ref: '{379;646}'
+        rel: stem
+        round: false
+  uni0416:
+    y:
+      points:
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-28;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{389;0}'
+        - '{687;0}'
+        ref: '{91;0}'
+        rel: shift
+      - ptid:
+        - '{226;-6}'
+        - '{273;-6}'
+        - '{501;-6}'
+        - '{548;-6}'
+        - '{802;-6}'
+        ref: '{-28;-6}'
+        rel: shift
+      - ptid: '{-22;25}'
+        ref: '{91;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{232;25}'
+          - '{279;25}'
+          - '{507;25}'
+          - '{554;25}'
+          - '{808;25}'
+          rel: shift
+      - ptid:
+          base: '{242;646}'
+          pt-a: '{136;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - '{528;646}'
+        - '{814;646}'
+        ref: '{242;646}'
+        rel: shift
+      - ptid:
+        - '{350;650}'
+        - '{415;652}'
+        - '{643;652}'
+        - '{708;650}'
+        - '{922;650}'
+        ref: '{136;650}'
+        rel: shift
+      - ptid: '{128;619}'
+        ref: '{242;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{342;619}'
+          - '{408;621}'
+          - '{636;621}'
+          - '{700;619}'
+          - '{914;619}'
+          rel: shift
+      - ptid:
+        - '{379;310}'
+        - '{428;299}'
+        - '{478;299}'
+        - '{531;310}'
+        ref:
+        - '{242;646}'
+        - '{91;0}'
+        rel: interpolate
+  uni0417:
+    y:
+      points:
+      - ptid: '{165;-11}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{215;35}'
+          rel: stem
+          round: false
+      - ptid: '{343;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{329;615}'
+          rel: stem
+          round: false
+      - ptid: '{257;317}'
+        ref:
+        - '{165;-11}'
+        - '{343;660}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{239;358}'
+          rel: stem
+          round: false
+      - ptid: '{321;336}'
+        ref:
+        - '{257;317}'
+        - '{239;358}'
+        rel: interpolate
+  uni0418:
+    y:
+      points:
+      - ptid:
+          base: '{127;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{429;-6}'
+        - '{259;-6}'
+        - '{697;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid: '{565;0}'
+        ref: '{127;0}'
+        rel: shift
+      - ptid:
+          base: '{266;646}'
+          pt-a: '{133;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - '{401;652}'
+        - '{571;652}'
+        - '{839;652}'
+        ref: '{133;652}'
+        rel: shift
+      - ptid: '{126;621}'
+        ref: '{266;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{394;621}'
+          - '{564;621}'
+          - '{832;621}'
+          rel: shift
+      - ptid: '{704;646}'
+        ref: '{266;646}'
+        rel: shift
+      - ptid:
+        - '{197;150}'
+        - '{185;88}'
+        - '{643;559}'
+        - '{634;496}'
+        ref:
+        - '{266;646}'
+        - '{127;0}'
+        rel: interpolate
+  uni041B:
+    y:
+      points:
+      - ptid:
+          base: '{497;0}'
+          pt-a: '{362;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{630;-6}'
+        ref: '{362;-6}'
+        rel: shift
+      - ptid: '{369;25}'
+        ref: '{497;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{637;25}'
+          rel: shift
+      - ptid: '{61;-12}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{88;47}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{411;646}'
+          pt-a: '{302;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{296;621}'
+        ref: '{411;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{759;621}'
+          rel: shift
+      - ptid: '{508;614}'
+        ref: '{411;646}'
+        rel: stem
+        round: false
+      - ptid: '{765;650}'
+        ref: '{302;650}'
+        rel: shift
+  uni041F:
+    y:
+      points:
+      - ptid:
+          base: '{114;0}'
+          pt-a: '{2;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{512;0}'
+        ref: '{114;0}'
+        rel: shift
+      - ptid:
+        - '{400;-4}'
+        - '{224;-4}'
+        - '{622;-4}'
+        ref: '{2;-4}'
+        rel: shift
+      - ptid: '{8;27}'
+        ref: '{114;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{406;27}'
+          - '{230;27}'
+          - '{628;27}'
+          rel: shift
+      - ptid:
+          base: '{253;646}'
+          pt-a: '{144;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{446;621}'
+        ref: '{253;646}'
+        rel: stem
+        round: false
+      - ptid: '{136;621}'
+        ref: '{253;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{756;621}'
+          rel: shift
+      - ptid: '{764;652}'
+        ref: '{144;652}'
+        rel: shift
+  uni0423:
+    y:
+      points:
+      - ptid: '{146;-25}'
+        points:
+        - ptid: '{171;14}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{259;646}'
+          pt-a: '{156;650}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{719;646}'
+        ref: '{259;646}'
+        rel: shift
+      - ptid:
+        - '{377;650}'
+        - '{620;650}'
+        - '{807;650}'
+        ref: '{156;650}'
+        rel: shift
+      - ptid: '{148;619}'
+        ref: '{259;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{369;619}'
+          - '{612;619}'
+          - '{799;619}'
+          rel: shift
+      - ptid:
+        - '{412;255}'
+        - '{339;160}'
+        ref:
+        - '{146;-25}'
+        - '{259;646}'
+        rel: interpolate
+  uni0424:
+    y:
+      points:
+      - ptid:
+          base: '{334;0}'
+          pt-a: '{200;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{468;-6}'
+        ref: '{200;-6}'
+        rel: shift
+      - ptid: '{206;25}'
+        ref: '{334;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{474;25}'
+          rel: shift
+      - ptid:
+          base: '{475;646}'
+          pt-a: '{341;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{609;652}'
+        ref: '{341;652}'
+        rel: shift
+      - ptid: '{335;621}'
+        ref: '{475;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{603;621}'
+          rel: shift
+      - ptid:
+        - '{450;530}'
+        - '{360;119}'
+        ref:
+        - '{334;0}'
+        - '{475;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{423;491}'
+          ref: '{450;530}'
+          rel: stem
+          round: false
+        - ptid: '{385;158}'
+          ref: '{360;119}'
+          rel: stem
+          round: false
+  uni0426:
+    y:
+      points:
+      - ptid:
+          base: '{104;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{307;25}'
+        ref: '{104;0}'
+        rel: stem
+        round: false
+      - ptid: '{-3;25}'
+        ref: '{104;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{617;25}'
+          rel: shift
+      - ptid:
+          base: '{243;646}'
+          pt-a: '{133;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{641;646}'
+        ref: '{243;646}'
+        rel: shift
+      - ptid:
+        - '{355;650}'
+        - '{531;650}'
+        - '{753;650}'
+        ref: '{133;650}'
+        rel: shift
+      - ptid: '{125;619}'
+        ref: '{243;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{523;619}'
+          - '{347;619}'
+          - '{745;619}'
+          rel: shift
+      - ptid: '{548;-191}'
+        ref: '{104;0}'
+        rel: stem
+  uni0427:
+    y:
+      points:
+      - ptid:
+          base: '{458;0}'
+          pt-a: '{323;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{591;-6}'
+        ref: '{323;-6}'
+        rel: shift
+      - ptid: '{330;25}'
+        ref: '{458;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{598;25}'
+          rel: shift
+      - ptid:
+          base: '{253;646}'
+          pt-a: '{121;651}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{598;646}'
+        ref: '{253;646}'
+        rel: shift
+      - ptid:
+        - '{360;651}'
+        - '{465;652}'
+        - '{733;652}'
+        ref: '{121;651}'
+        rel: shift
+      - ptid: '{115;620}'
+        ref: '{253;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{354;620}'
+          - '{458;621}'
+          - '{726;621}'
+          rel: shift
+      - ptid: '{275;271}'
+        ref:
+        - '{253;646}'
+        - '{458;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{338;326}'
+          rel: stem
+          round: false
+  uni0428:
+    y:
+      points:
+      - ptid:
+          base: '{164;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{909;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid: '{282;25}'
+        ref: '{164;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{630;25}'
+          rel: shift
+      - ptid: '{-3;25}'
+        ref: '{164;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{915;25}'
+          rel: shift
+      - ptid:
+          base: '{243;646}'
+          pt-a: '{133;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - '{355;650}'
+        - '{481;650}'
+        - '{703;650}'
+        - '{829;650}'
+        - '{1051;650}'
+        ref: '{133;650}'
+        rel: shift
+      - ptid:
+        - '{591;646}'
+        - '{939;646}'
+        ref: '{243;646}'
+        rel: shift
+      - ptid: '{125;619}'
+        ref: '{243;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{695;619}'
+          - '{821;619}'
+          - '{1043;619}'
+          - '{473;619}'
+          - '{347;619}'
+          rel: shift
+  uni0429:
+    y:
+      points:
+      - ptid:
+          base: '{164;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{282;25}'
+        ref: '{164;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{630;25}'
+          rel: shift
+      - ptid: '{-3;25}'
+        ref: '{164;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{915;25}'
+          rel: shift
+      - ptid:
+          base: '{243;646}'
+          pt-a: '{133;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid:
+        - '{355;650}'
+        - '{481;650}'
+        - '{703;650}'
+        - '{829;650}'
+        - '{1051;650}'
+        ref: '{133;650}'
+        rel: shift
+      - ptid:
+        - '{591;646}'
+        - '{939;646}'
+        ref: '{243;646}'
+        rel: shift
+      - ptid: '{125;619}'
+        ref: '{243;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{695;619}'
+          - '{821;619}'
+          - '{1043;619}'
+          - '{473;619}'
+          - '{347;619}'
+          rel: shift
+      - ptid: '{846;-191}'
+        ref: '{164;0}'
+        rel: stem
+  uni042A:
+    y:
+      points:
+      - ptid:
+          base: '{326;0}'
+          pt-a: '{218;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{454;-4}'
+        ref: '{218;-4}'
+        rel: shift
+      - ptid: '{444;35}'
+        ref: '{326;0}'
+        rel: stem
+        round: false
+      - ptid: '{226;28}'
+        ref: '{326;0}'
+        rel: stem
+        round: false
+      - ptid: '{289;22}'
+        ref:
+        - '{326;0}'
+        - '{226;28}'
+        rel: interpolate
+      - ptid:
+          base: '{469;646}'
+          pt-a: '{573;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{189;652}'
+        ref: '{573;650}'
+        rel: shift
+      - ptid: '{297;606}'
+        ref: '{469;646}'
+        rel: stem
+        round: false
+      - ptid: '{419;627}'
+        ref:
+        - '{469;646}'
+        - '{297;606}'
+        rel: interpolate
+      - ptid: '{567;619}'
+        ref: '{469;646}'
+        rel: stem
+        round: false
+      - ptid: '{524;371}'
+        ref:
+        - '{469;646}'
+        - '{326;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{518;330}'
+          rel: stem
+          round: false
+  uni042B:
+    y:
+      points:
+      - ptid:
+          base: '{100;0}'
+          pt-a: '{-8;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+        - '{228;-4}'
+        - '{509;-6}'
+        - '{777;-6}'
+        ref: '{-8;-4}'
+        rel: shift
+      - ptid: '{644;0}'
+        ref: '{100;0}'
+        rel: shift
+      - ptid: '{-1;28}'
+        ref: '{100;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{515;25}'
+          - '{783;25}'
+          rel: shift
+      - ptid: '{217;35}'
+        ref: '{100;0}'
+        rel: stem
+        round: false
+      - ptid:
+          base: '{241;646}'
+          pt-a: '{108;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{781;646}'
+        ref: '{241;646}'
+        rel: shift
+      - ptid:
+        - '{376;652}'
+        - '{648;652}'
+        - '{916;652}'
+        ref: '{108;652}'
+        rel: shift
+      - ptid: '{102;621}'
+        ref: '{241;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{370;621}'
+          - '{642;621}'
+          - '{910;621}'
+          rel: shift
+      - ptid: '{296;371}'
+        ref:
+        - '{241;646}'
+        - '{100;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{290;330}'
+          rel: stem
+          round: false
+  uni042C:
+    y:
+      points:
+      - ptid:
+          base: '{99;0}'
+          pt-a: '{-9;-4}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{227;-4}'
+        ref: '{-9;-4}'
+        rel: shift
+      - ptid: '{216;35}'
+        ref: '{99;0}'
+        rel: stem
+        round: false
+      - ptid: '{62;22}'
+        ref:
+        - '{99;0}'
+        - '{216;35}'
+        rel: interpolate
+      - ptid: '{-2;28}'
+        ref: '{99;0}'
+        rel: stem
+        round: false
+      - ptid:
+          base: '{242;646}'
+          pt-a: '{110;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{378;652}'
+        ref: '{110;652}'
+        rel: shift
+      - ptid: '{102;621}'
+        ref: '{242;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{370;621}'
+          rel: shift
+      - ptid: '{295;371}'
+        ref:
+        - '{242;646}'
+        - '{99;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{289;330}'
+          rel: stem
+          round: false
+  uni042D:
+    y:
+      points:
+      - ptid: '{251;-10}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{231;29}'
+          rel: stem
+          round: false
+      - ptid: '{387;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{385;621}'
+          rel: stem
+          round: false
+      - ptid: '{607;318}'
+        ref:
+        - '{387;660}'
+        - '{251;-10}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{615;359}'
+          rel: stem
+          round: false
+  uni042E:
+    y:
+      points:
+      - ptid:
+          base: '{127;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+          base: '{266;646}'
+          pt-a: '{133;652}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+      - ptid: '{401;652}'
+        ref: '{133;652}'
+        rel: shift
+      - ptid: '{126;621}'
+        ref: '{266;646}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{394;621}'
+          rel: shift
+      - ptid: '{259;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid: '{-3;25}'
+        ref: '{127;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{265;25}'
+          rel: shift
+      - ptid: '{187;300}'
+        ref:
+        - '{127;0}'
+        - '{266;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{199;356}'
+          rel: stem
+          round: false
+      - ptid: '{644;-11}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{670;33}'
+          rel: stem
+          round: false
+      - ptid: '{788;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{760;616}'
+          rel: stem
+          round: false
+  uni042F:
+    y:
+      points:
+      - ptid:
+          base: '{445;0}'
+          pt-a: '{333;-5}'
+        function:
+          nm: cupped-serif-helper
+      - ptid:
+          base: '{588;646}'
+          pt-a: '{688;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{464;650}'
+        ref: '{688;650}'
+        rel: shift
+      - ptid: '{483;611}'
+        ref: '{588;646}'
+        rel: stem
+        round: false
+      - ptid: '{626;627}'
+        ref:
+        - '{588;646}'
+        - '{483;611}'
+        rel: interpolate
+      - ptid: '{681;619}'
+        ref: '{588;646}'
+        rel: stem
+        round: false
+      - ptid: '{553;-5}'
+        ref: '{333;-5}'
+        rel: shift
+      - ptid: '{340;26}'
+        ref: '{445;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{560;26}'
+          rel: shift
+      - ptid: '{36;-11}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{-19;36}'
+          rel: stem
+          round: false
+      - ptid: '{390;286}'
+        ref:
+        - '{445;0}'
+        - '{588;646}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{407;325}'
+          rel: stem
+          round: false
+      - ptid: '{306;329}'
+        ref:
+        - '{390;286}'
+        - '{407;325}'
+        rel: interpolate
+  uni0431:
+    y:
+      points:
+      - ptid: '{165;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{193;37}'
+          rel: stem
+          round: false
+      - ptid: '{292;467}'
+        pos: xheight
+        points:
+        - ptid: '{259;416}'
+          rel: stem
+          round: false
+      - ptid: '{494;730}'
+      - ptid:
+        - '{358;651}'
+        - '{353;586}'
+        ref:
+        - '{494;730}'
+        - '{292;467}'
+        rel: interpolate
+  uni0432:
+    y:
+      points:
+      - ptid: '{202;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{190;38}'
+          rel: stem
+          round: false
+      - ptid: '{251;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{240;445}'
+          rel: stem
+          round: false
+      - ptid: '{71;238}'
+        ref:
+        - '{251;477}'
+        - '{202;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{77;281}'
+          rel: stem
+          round: false
+      - ptid: '{232;267}'
+        ref:
+        - '{71;238}'
+        - '{77;281}'
+        rel: interpolate
+  uni0433:
+    y:
+      points:
+      - ptid: '{162;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{188;40}'
+          rel: stem
+          round: false
+      - ptid: '{247;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{216;425}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{184;251}'
+        - '{199;213}'
+        ref:
+        - '{247;477}'
+        - '{162;-12}'
+        rel: interpolate
+  uni0434:
+    y:
+      points:
+      - ptid: '{272;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{272;437}'
+          rel: stem
+          round: false
+      - ptid: '{190;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{197;29}'
+          rel: stem
+          round: false
+      - ptid: '{173;700}'
+        points:
+        - ptid: '{163;675}'
+          rel: shift
+  uni0436:
+    y:
+      points:
+      - ptid: '{85;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{605;-11}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{643;52}'
+            rel: stem
+            round: false
+        - ptid: '{104;27}'
+          rel: stem
+          round: false
+      - ptid: '{372;0}'
+        pos: baseline
+      - ptid: '{506;465}'
+        pos: xheight
+      - ptid: '{199;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{719;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{700;439}'
+            rel: stem
+            round: false
+        - ptid: '{161;414}'
+          rel: stem
+          round: false
+      - ptid: '{257;198}'
+        ref:
+        - '{85;-11}'
+        - '{199;477}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{263;241}'
+          rel: stem
+          round: false
+  uni0437:
+    y:
+      points:
+      - ptid: '{128;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{141;27}'
+          rel: stem
+          round: false
+      - ptid: '{237;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{201;431}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{161;224}'
+        - '{168;284}'
+        ref:
+        - '{237;477}'
+        - '{128;-11}'
+        rel: interpolate
+        round: true
+      - ptid: '{257;262}'
+        ref:
+        - '{161;224}'
+        - '{168;284}'
+        rel: interpolate
+  uni043A:
+    y:
+      points:
+      - ptid: '{391;-8}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{438;22}'
+          rel: stem
+          round: false
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+        - ptid: '{408;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{407;415}'
+            rel: stem
+            round: false
+      - ptid: '{137;207}'
+        ref:
+        - '{195;477}'
+        - '{112;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{146;248}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{260;263}'
+            rel: shift
+  uni043B:
+    y:
+      points:
+      - ptid: '{92;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{377;-11}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{427;59}'
+            rel: stem
+            round: false
+        - ptid: '{95;26}'
+          rel: stem
+          round: false
+      - ptid: '{456;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{409;416}'
+          rel: stem
+          round: false
+  uni043C:
+    y:
+      points:
+      - ptid: '{78;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{535;-11}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{585;59}'
+            rel: stem
+            round: false
+        - ptid: '{97;16}'
+          rel: stem
+          round: false
+      - ptid: '{277;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{679;477}'
+          rel: shift
+        - ptid: '{237;411}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{263;317}'
+        - '{365;94}'
+        - '{581;352}'
+        - '{349;16}'
+        ref:
+        - '{277;477}'
+        - '{78;-11}'
+        rel: interpolate
+  uni043D:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{314;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{366;55}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{471;478}'
+          rel: shift
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{136;198}'
+        ref:
+        - '{195;477}'
+        - '{112;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{142;241}'
+          rel: stem
+          round: false
+  uni0444:
+    y:
+      points:
+      - ptid: '{103;-246}'
+        pos: lc-descender
+        points:
+        - ptid: '{131;-195}'
+          rel: stem
+          round: false
+      - ptid: '{557;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{529;699}'
+          rel: stem
+          round: false
+      - ptid: '{287;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{513;477}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{489;425}'
+            rel: stem
+            round: false
+        - ptid: '{268;439}'
+          rel: stem
+          round: false
+      - ptid: '{161;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{427;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{449;39}'
+            rel: stem
+            round: false
+        - ptid: '{205;52}'
+          rel: stem
+          round: false
+  uni0446:
+    y:
+      points:
+      - ptid: '{99;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{318;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{375;59}'
+            rel: stem
+            round: false
+          - ptid: '{146;-61}'
+            rel: stem
+            points:
+            - ptid: '{140;-103}'
+              rel: stem
+              round: false
+            - ptid: '{258;-101}'
+              rel: stem
+              points:
+              - ptid: '{257;-142}'
+                rel: stem
+                round: false
+        - ptid: '{156;54}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;411}'
+          rel: stem
+          round: false
+      - ptid: '{401;465}'
+        pos: xheight
+  uni0447:
+    y:
+      points:
+      - ptid: '{308;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{360;55}'
+          rel: stem
+          round: false
+      - ptid: '{185;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{465;478}'
+          rel: shift
+        - ptid: '{134;407}'
+          rel: stem
+          round: false
+      - ptid: '{134;166}'
+        ref:
+        - '{185;477}'
+        - '{308;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{194;232}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{368;355}'
+        - '{378;418}'
+        ref:
+        - '{308;-11}'
+        - '{185;477}'
+        rel: interpolate
+  uni0448:
+    y:
+      points:
+      - ptid: '{477;465}'
+        pos: xheight
+        points:
+        - ptid: '{700;465}'
+          rel: shift
+      - ptid: '{204;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;406}'
+          rel: stem
+          round: false
+      - ptid: '{551;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{328;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{106;-12}'
+            rel: shift
+          - ptid: '{385;54}'
+            rel: stem
+            round: false
+            points:
+            - ptid: '{163;54}'
+              rel: shift
+        - ptid: '{603;54}'
+          rel: stem
+          round: false
+  uni0449:
+    y:
+      points:
+      - ptid: '{551;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{328;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{106;-12}'
+            rel: shift
+          - ptid: '{385;54}'
+            rel: stem
+            round: false
+            points:
+            - ptid: '{163;54}'
+              rel: shift
+          - ptid: '{291;-61}'
+            rel: stem
+            points:
+            - ptid: '{442;-101}'
+              rel: stem
+              points:
+              - ptid: '{421;-142}'
+                rel: stem
+                round: false
+            - ptid: '{270;-103}'
+              rel: stem
+              round: false
+        - ptid: '{603;54}'
+          rel: stem
+          round: false
+      - ptid: '{204;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;406}'
+          rel: stem
+          round: false
+      - ptid: '{477;465}'
+        pos: xheight
+        points:
+        - ptid: '{700;465}'
+          rel: shift
+      - ptid:
+        - '{543;159}'
+        - '{320;159}'
+        ref:
+        - '{477;465}'
+        - '{328;-12}'
+        rel: interpolate
+  uni044A:
+    y:
+      points:
+      - ptid: '{144;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{352;477}'
+          rel: shift
+        - ptid: '{123;435}'
+          rel: stem
+          round: false
+      - ptid: '{244;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{246;27}'
+          rel: stem
+          round: false
+      - ptid: '{255;284}'
+        ref:
+        - '{144;477}'
+        - '{244;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{228;246}'
+          rel: stem
+          round: false
+  uni044B:
+    y:
+      points:
+      - ptid: '{216;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{517;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{567;59}'
+            rel: stem
+            round: false
+        - ptid: '{215;27}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{674;477}'
+          rel: shift
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{255;284}'
+        ref:
+        - '{216;-11}'
+        - '{195;477}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{225;243}'
+          rel: stem
+          round: false
+  uni044C:
+    y:
+      points:
+      - ptid: '{216;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{215;27}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{255;284}'
+        ref:
+        - '{195;477}'
+        - '{216;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{225;243}'
+          rel: stem
+          round: false
+  uni044D:
+    y:
+      points:
+      - ptid: '{123;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{142;27}'
+          rel: stem
+          round: false
+      - ptid: '{249;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{205;414}'
+          rel: stem
+          round: false
+      - ptid: '{336;219}'
+        ref:
+        - '{249;477}'
+        - '{123;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{336;262}'
+          rel: stem
+          round: false
+  uni044E:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{136;198}'
+        ref:
+        - '{112;0}'
+        - '{195;477}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{142;241}'
+          rel: stem
+          round: false
+      - ptid: '{426;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{448;39}'
+          rel: stem
+          round: false
+      - ptid: '{509;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{485;425}'
+          rel: stem
+          round: false
+  uni044F:
+    y:
+      points:
+      - ptid: '{278;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{5;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{-24;26}'
+            rel: stem
+            round: false
+        - ptid: '{328;59}'
+          rel: stem
+          round: false
+      - ptid: '{324;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{308;440}'
+          rel: stem
+          round: false
+      - ptid: '{222;206}'
+        ref:
+        - '{324;477}'
+        - '{278;-12}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{245;243}'
+          rel: stem
+          round: false
+        - ptid: '{151;220}'
+          rel: shift
+  uni0452:
+    y:
+      points:
+      - ptid: '{71;0}'
+        pos: baseline
+      - ptid: '{98;-250}'
+        pos: lc-descender
+        points:
+        - ptid: '{126;-176}'
+          rel: stem
+          round: false
+      - ptid: '{227;750}'
+        pos: lc-ascender
+        points:
+        - ptid: '{98;698}'
+          rel: stem
+      - ptid: '{344;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{323;414}'
+          rel: stem
+          round: false
+      - ptid: '{135;234}'
+        ref:
+        - '{344;477}'
+        - '{71;0}'
+        rel: interpolate
+      - ptid: '{35;581}'
+        ref:
+        - '{344;477}'
+        - '{227;750}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{35;634}'
+          rel: stem
+          round: false
+  uni0454:
+    y:
+      points:
+      - ptid: '{165;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{209;52}'
+          rel: stem
+          round: false
+      - ptid: '{291;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{272;439}'
+          rel: stem
+          round: false
+      - ptid: '{78;219}'
+        ref:
+        - '{291;477}'
+        - '{165;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{78;262}'
+          rel: stem
+          round: false
+  uni0456:
+    y:
+      points:
+      - ptid: '{96;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{146;59}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{241;577}'
+        pos: diacritic-height
+        points:
+        - ptid: '{241;691}'
+          rel: stem
+          dist: serif-undershoot
+  uni0459:
+    y:
+      points:
+      - ptid: '{92;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{488;-11}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{487;27}'
+            rel: stem
+            round: false
+        - ptid: '{95;26}'
+          rel: stem
+          round: false
+      - ptid: '{446;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{396;416}'
+          rel: stem
+          round: false
+      - ptid: '{527;284}'
+        ref:
+        - '{446;477}'
+        - '{488;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{497;243}'
+          rel: stem
+          round: false
+  uni045A:
+    y:
+      points:
+      - ptid: '{112;0}'
+        pos: baseline
+      - ptid: '{434;-11}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{433;27}'
+          rel: stem
+          round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{471;477}'
+          rel: shift
+        - ptid: '{143;411}'
+          rel: stem
+          round: false
+      - ptid: '{136;198}'
+        ref:
+        - '{195;477}'
+        - '{112;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{142;241}'
+          rel: stem
+          round: false
+      - ptid: '{473;284}'
+        ref:
+        - '{195;477}'
+        - '{434;-11}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{443;243}'
+          rel: stem
+          round: false
+  uni045F:
+    y:
+      points:
+      - ptid: '{99;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{156;54}'
+          rel: stem
+          round: false
+        - ptid: '{318;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{375;59}'
+            rel: stem
+            round: false
+          - ptid: '{227;-34}'
+            rel: stem
+            round: false
+      - ptid: '{195;477}'
+        pos: xheight-overshoot
+        points:
+        - ptid: '{153;411}'
+          rel: stem
+          round: false
+      - ptid: '{467;465}'
+        pos: xheight
+  uni0490:
+    y:
+      points:
+      - ptid:
+          base: '{140;0}'
+          pt-a: '{-9;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{287;-6}'
+        ref: '{-9;-6}'
+        rel: shift
+      - ptid: '{-4;25}'
+        ref: '{140;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{292;25}'
+          rel: shift
+      - ptid:
+          base: '{261;646}'
+          pt-a: '{158;650}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{534;650}'
+        ref: '{158;650}'
+        rel: shift
+      - ptid: '{584;606}'
+        ref: '{261;646}'
+        rel: stem
+        round: false
+      - ptid: '{152;619}'
+        ref: '{261;646}'
+        rel: stem
+        round: false
+      - ptid: '{302;627}'
+        ref:
+        - '{261;646}'
+        - '{584;606}'
+        rel: interpolate
+  uni0491:
+    y:
+      points:
+      - ptid: '{87;0}'
+        pos: baseline
+      - ptid:
+          base: '{172;465}'
+          pt-a: '{92;467}'
+        function:
+          nm: cupped-serif-helper
+          base-cv: xheight
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: '{380;467}'
+        ref: '{92;467}'
+        rel: shift
+      - ptid: '{201;425}'
+        ref: '{172;465}'
+        rel: stem
+        round: false
+      - ptid: '{442;581}'
+        ref: '{172;465}'
+        rel: stem
+  uni1E9E:
+    y:
+      points:
+      - ptid: '{427;658}'
+        pos: cap-height-overshoot
+        points:
+        - ptid: '{416;617}'
+          rel: stem
+          round: false
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-18;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{-13;25}'
+        ref: '{91;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid: '{202;25}'
+          rel: shift
+      - ptid: '{197;-6}'
+        ref: '{-18;-6}'
+        rel: shift
+      - ptid: '{395;-11}'
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: '{386;14}'
+          rel: stem
+          round: false
+      - ptid: '{387;335}'
+        ref:
+        - '{395;-11}'
+        - '{427;658}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{447;379}'
+          rel: shift
+  uni1F08:
+    y:
+      points:
+      - ptid:
+          base: '{91;0}'
+          pt-a: '{-27;-6}'
+        function:
+          nm: cupped-serif-helper
+      - ptid: '{-22;25}'
+        ref: '{91;0}'
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - '{212;25}'
+          - '{444;25}'
+          - '{715;25}'
+          rel: shift
+      - ptid:
+        - '{207;-6}'
+        - '{439;-6}'
+        - '{710;-6}'
+        ref: '{-27;-6}'
+        rel: shift
+      - ptid: '{576;0}'
+        ref: '{91;0}'
+        rel: shift
+      - ptid: '{374;660}'
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - '{369;631}'
+          - '{409;635}'
+          - '{417;594}'
+          - '{438;601}'
+          rel: shift
+      - ptid: '{216;254}'
+        ref:
+        - '{374;660}'
+        - '{91;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{239;295}'
+          rel: stem
+          round: false
+      - ptid: '{103;418}'
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: '{93;439}'
+          rel: shift
+        - ptid: '{174;609}'
+          rel: stem
+      - ptid:
+        - '{198;512}'
+        - '{184;551}'
+        ref:
+        - '{103;418}'
+        - '{174;609}'
+        rel: interpolate
+  uni1F09:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: '{188;418}'
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: '{161;609}'
+          rel: stem
+      - ptid:
+        - '{115;512}'
+        - '{138;551}'
+        ref:
+        - '{188;418}'
+        - '{161;609}'
+        rel: interpolate
+  uni1F0A:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: '{56;417}'
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: '{127;608}'
+          rel: stem
+        - ptid: '{315;416}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{295;581}'
+            rel: stem
+      - ptid:
+        - '{137;550}'
+        - '{151;511}'
+        ref:
+        - '{56;417}'
+        - '{127;608}'
+        rel: interpolate
+  uni1F0B:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: '{192;419}'
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: '{121;610}'
+          rel: stem
+        - ptid: '{337;418}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{287;583}'
+            rel: stem
+      - ptid:
+        - '{111;552}'
+        - '{97;513}'
+        ref:
+        - '{192;419}'
+        - '{121;610}'
+        rel: interpolate
+  uni1F0C:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 67
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 61
+          rel: stem
+        - ptid: 72
+          rel: stem
+          min: false
+          points:
+          - ptid: 69
+            rel: stem
+      - ptid:
+        - 53
+        - 54
+        ref:
+        - 67
+        - 61
+        rel: interpolate
+  uni1F0D:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 70
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 74
+          rel: stem
+          min: false
+          points:
+          - ptid: 71
+            rel: stem
+        - ptid: 56
+          rel: stem
+      - ptid:
+        - 64
+        - 63
+        ref:
+        - 70
+        - 56
+        rel: interpolate
+  uni1F0E:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 67
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 60
+          rel: stem
+          points:
+          - ptid: 78
+            rel: stem
+            points:
+            - ptid: 70
+              rel: stem
+              round: false
+      - ptid:
+        - 54
+        - 53
+        ref:
+        - 67
+        - 60
+        rel: interpolate
+  uni1F0F:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 70
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 56
+          rel: stem
+          points:
+          - ptid: 80
+            rel: stem
+            points:
+            - ptid: 72
+              rel: stem
+              round: false
+  uni1F88:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 84
+        pos: superscript-baseline-undershoot
+        points:
+        - ptid: 78
+          rel: stem
+      - ptid:
+        - 70
+        - 71
+        ref:
+        - 84
+        - 78
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: '{867;398}'
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F89:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 87
+        pos: ypo_height
+        points:
+        - ptid: 73
+          rel: stem
+      - ptid:
+        - 81
+        - 80
+        ref:
+        - 87
+        - 73
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8A:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 84
+        pos: ypo_height
+        points:
+        - ptid: 78
+          rel: stem
+        - ptid: 89
+          rel: stem
+          min: false
+          points:
+          - ptid: 87
+            rel: stem
+      - ptid:
+        - 70
+        - 71
+        ref:
+        - 84
+        - 78
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8B:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 85
+        pos: ypo_height
+        points:
+        - ptid: 73
+          rel: stem
+        - ptid: 89
+          rel: stem
+          min: false
+          points:
+          - ptid: 87
+            rel: stem
+      - ptid:
+        - 81
+        - 80
+        ref:
+        - 85
+        - 73
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8C:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 84
+        pos: ypo_height
+        points:
+        - ptid: 78
+          rel: stem
+        - ptid: 89
+          rel: stem
+          min: false
+          points:
+          - ptid: 86
+            rel: stem
+      - ptid:
+        - 70
+        - 71
+        ref:
+        - 84
+        - 78
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8D:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 87
+        pos: ypo_height
+        points:
+        - ptid: 73
+          rel: stem
+        - ptid: 90
+          rel: stem
+          min: false
+          points:
+          - ptid: 88
+            rel: stem
+      - ptid:
+        - 80
+        - 81
+        ref:
+        - 87
+        - 73
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8E:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 84
+        pos: ypo_height
+        points:
+        - ptid: 77
+          rel: stem
+          points:
+          - ptid: 95
+            rel: stem
+            points:
+            - ptid: 87
+              rel: stem
+              round: false
+      - ptid:
+        - 71
+        - 70
+        ref:
+        - 84
+        - 77
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F8F:
+    y:
+      points:
+      - ptid:
+          base: 43
+          pt-a: 45
+        function:
+          nm: cupped-serif-helper
+      - ptid: 46
+        ref: 43
+        rel: stem
+        round: false
+        points:
+        - ptid:
+          - 40
+          - 25
+          - 19
+          rel: shift
+      - ptid:
+        - 41
+        - 24
+        - 20
+        ref: 45
+        rel: shift
+      - ptid: 22
+        ref: 43
+        rel: shift
+      - ptid: 9
+        pos: cap-height-overshoot
+        points:
+        - ptid:
+          - 8
+          - 5
+          - 33
+          - 34
+          rel: shift
+      - ptid: 50
+        ref:
+        - 9
+        - 43
+        rel: interpolate
+        round: true
+        points:
+        - ptid: 47
+          rel: stem
+          round: false
+      - ptid: 87
+        pos: ypo_height
+        points:
+        - ptid: 73
+          rel: stem
+          points:
+          - ptid: 97
+            rel: stem
+            points:
+            - ptid: 89
+              rel: stem
+              round: false
+      - ptid:
+        - 80
+        - 81
+        ref:
+        - 87
+        - 73
+        rel: interpolate
+      - ptid: 67
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: 61
+          rel: stem
+          round: false
+      - ptid: 54
+        pos: ypo_height
+    props:
+      category: Ll
+  uni1F3F:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 58
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 44
+          rel: stem
+          points:
+          - ptid: 68
+            rel: stem
+            points:
+            - ptid: 60
+              rel: stem
+              round: false
+      - ptid:
+        - 52
+        - 51
+        ref:
+        - 58
+        - 44
+        rel: interpolate
+  uni1F3E:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 55
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 48
+          rel: stem
+          points:
+          - ptid: 66
+            rel: stem
+            points:
+            - ptid: 58
+              rel: stem
+              round: false
+      - ptid:
+        - 41
+        - 42
+        ref:
+        - 55
+        - 48
+        rel: interpolate
+  uni1F3D:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 58
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 44
+          rel: stem
+        - ptid: 62
+          rel: stem
+          min: false
+          points:
+          - ptid: 59
+            rel: stem
+      - ptid:
+        - 52
+        - 51
+        ref:
+        - 58
+        - 44
+        rel: interpolate
+  uni1F3C:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 55
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 49
+          rel: stem
+        - ptid: 60
+          rel: stem
+          min: false
+          points:
+          - ptid: 57
+            rel: stem
+      - ptid:
+        - 42
+        - 41
+        ref:
+        - 55
+        - 49
+        rel: interpolate
+  uni1F3B:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 56
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 44
+          rel: stem
+        - ptid: 60
+          rel: stem
+          min: false
+          points:
+          - ptid: 58
+            rel: stem
+      - ptid:
+        - 52
+        - 51
+        ref:
+        - 56
+        - 44
+        rel: interpolate
+  uni1F3A:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 55
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 49
+          rel: stem
+        - ptid: 60
+          rel: stem
+          min: false
+          points:
+          - ptid: 58
+            rel: stem
+      - ptid:
+        - 41
+        - 42
+        ref:
+        - 55
+        - 49
+        rel: interpolate
+  uni1F39:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 58
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 44
+          rel: stem
+      - ptid:
+        - 51
+        - 52
+        ref:
+        - 58
+        - 44
+        rel: interpolate
+  uni1F38:
+    y:
+      points:
+      - ptid:
+          base: 35
+          pt-a: 37
+        function:
+          nm: cupped-serif-helper
+      - ptid: 38
+        ref: 35
+        rel: stem
+        round: false
+        points:
+        - ptid: 32
+          rel: shift
+      - ptid: 33
+        ref: 37
+        rel: shift
+      - ptid:
+          base: 14
+          pt-a: 12
+        function:
+          nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
+      - ptid: 16
+        ref: 12
+        rel: shift
+      - ptid: 11
+        ref: 14
+        rel: stem
+        round: false
+        points:
+        - ptid: 17
+          rel: shift
+      - ptid: 55
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 49
+          rel: stem
+      - ptid:
+        - 41
+        - 42
+        ref:
+        - 55
+        - 49
+        rel: interpolate
+  uni1F4D:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 49
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 35
+          rel: stem
+        - ptid: 53
+          rel: stem
+          min: false
+          points:
+          - ptid: 50
+            rel: stem
+      - ptid:
+        - 42
+        - 43
+        ref:
+        - 49
+        - 35
+        rel: interpolate
+  uni1F4C:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 46
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 40
+          rel: stem
+        - ptid: 51
+          rel: stem
+          min: false
+          points:
+          - ptid: 48
+            rel: stem
+      - ptid:
+        - 32
+        - 33
+        ref:
+        - 46
+        - 40
+        rel: interpolate
+  uni1F4B:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 47
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 35
+          rel: stem
+        - ptid: 51
+          rel: stem
+          min: false
+          points:
+          - ptid: 49
+            rel: stem
+      - ptid:
+        - 42
+        - 43
+        ref:
+        - 47
+        - 35
+        rel: interpolate
+  uni1F4A:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 46
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 40
+          rel: stem
+        - ptid: 51
+          rel: stem
+          min: false
+          points:
+          - ptid: 49
+            rel: stem
+      - ptid:
+        - 32
+        - 33
+        ref:
+        - 46
+        - 40
+        rel: interpolate
+  uni1F49:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 49
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 35
+          rel: stem
+      - ptid:
+        - 43
+        - 42
+        ref:
+        - 49
+        - 35
+        rel: interpolate
+  uni1F48:
+    y:
+      points:
+      - ptid: 15
+        pos: cap-baseline-undershoot
+        points:
+        - ptid: 29
+          rel: stem
+          round: false
+      - ptid: 7
+        pos: cap-height-overshoot
+        points:
+        - ptid: 22
+          rel: stem
+          round: false
+      - ptid: 46
+        pos: cap-greek-diacritic-height
+        points:
+        - ptid: 40
+          rel: stem
+      - ptid:
+        - 32
+        - 33
+        ref:
+        - 46
+        - 40
+        rel: interpolate
+masters:
+  opsz-min:
+    name: opsz-min
+    vals:
+      opsz: -1.0
+  opsz-max:
+    name: opsz-max
+    vals:
+      opsz: 1.0
+  wght-max:
+    name: wght-max
+    vals:
+      wght: 1.0
