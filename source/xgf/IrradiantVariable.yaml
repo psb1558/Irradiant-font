@@ -1,6 +1,6 @@
 font:
-  in: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariableVF.ttf
-  out: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariable.ttf
+  in: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariableVF.ttf
+  out: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariable.ttf
 defaults:
   cv_vars_generated: true
   no-round:

@@ -1,6 +1,6 @@
 font:
-  in: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariable-ItalicVF.ttf
-  out: /Users/peterbaker/work/GitHub/Irradiant/fonts/IrradiantVariable-Italic.ttf
+  in: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariable-ItalicVF.ttf
+  out: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariable-Italic.ttf
 defaults:
   cv_vars_generated: true
   no-round:
@@ -206,6 +206,28 @@ cvt:
       glyph: uni1F88
       ptnum:
       - 54
+  punct-undershoot:
+    axis: y
+    type: pos
+    val: -12
+    origin:
+      glyph: period
+      ptnum:
+      - 11
+    same-as:
+      below:
+        cv: baseline
+        ppem: 40
+    cat: P
+  hyphen-height:
+    axis: y
+    type: pos
+    val: 216
+    origin:
+      glyph: hyphen
+      ptnum:
+      - 6
+    cat: P
 prep:
   code: |-
     <code xmlns="http://xgridfit.sourceforge.net/Xgridfit2">
@@ -8488,6 +8510,284 @@ glyphs:
         - 46
         - 40
         rel: interpolate
+  period:
+    y:
+      points:
+      - ptid: '{117;-12}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{117;121}'
+          rel: stem
+  comma:
+    y:
+      points:
+      - ptid: '{117;-11}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{38;-137}'
+          rel: shift
+        - ptid: '{119;121}'
+          rel: stem
+  colon:
+    y:
+      points:
+      - ptid: '{127;-12}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{127;121}'
+          rel: stem
+          dist: serif-undershoot
+          points:
+          - ptid: '{178;288}'
+            rel: stem
+            dist: serif-undershoot
+            points:
+            - ptid: '{178;421}'
+              rel: stem
+              dist: serif-undershoot
+  semicolon:
+    y:
+      points:
+      - ptid: '{118;-11}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{39;-137}'
+          rel: shift
+        - ptid: '{120;121}'
+          rel: stem
+          points:
+          - ptid: '{166;288}'
+            rel: stem
+            points:
+            - ptid: '{166;421}'
+              rel: stem
+  exclam:
+    y:
+      points:
+      - ptid: '{145;-13}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{145;135}'
+          rel: stem
+          round: false
+          dist: serif-undershoot
+          points:
+          - ptid: '{142;220}'
+            rel: stem
+            points:
+            - ptid: '{191;646}'
+              rel: stem
+  question:
+    y:
+      points:
+      - ptid: '{135;-13}'
+        pos: punct-undershoot
+        points:
+        - ptid: '{135;135}'
+          rel: stem
+          points:
+          - ptid: '{140;200}'
+            rel: stem
+      - ptid: '{263;647}'
+      - ptid:
+        - '{243;547}'
+        - '{259;383}'
+        ref:
+        - '{263;647}'
+        - '{140;200}'
+        rel: interpolate
+  dollar:
+    y:
+      points:
+      - ptid: '{84;0}'
+        pos: baseline
+        points:
+        - ptid: '{107;-64}'
+          rel: shift
+        - ptid: '{140;71}'
+          rel: stem
+          round: false
+      - ptid: '{257;465}'
+        pos: xheight
+        points:
+        - ptid: '{228;523}'
+          rel: shift
+        - ptid: '{202;404}'
+          rel: stem
+          round: false
+      - ptid: '{247;429}'
+        ref:
+        - '{257;465}'
+        - '{202;404}'
+        rel: interpolate
+      - ptid: '{138;41}'
+        ref:
+        - '{84;0}'
+        - '{140;71}'
+        rel: interpolate
+      - ptid:
+        - '{132;233}'
+        - '{205;251}'
+        ref:
+        - '{257;465}'
+        - '{84;0}'
+        rel: interpolate
+    props:
+      category: Ll
+  numbersign:
+    y:
+      points:
+      - ptid: '{110;0}'
+        pos: baseline
+        points:
+        - ptid: '{263;0}'
+          rel: shift
+      - ptid: '{368;585}'
+        points:
+        - ptid: '{521;585}'
+          rel: shift
+      - ptid:
+        - '{131;387}'
+        - '{41;181}'
+        ref:
+        - '{368;585}'
+        - '{110;0}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{49;225}'
+          ref: '{41;181}'
+          rel: stem
+          round: false
+        - ptid: '{139;432}'
+          ref: '{131;387}'
+          rel: stem
+          round: false
+  percent:
+    y:
+      points:
+      - ptid: '{237;277}'
+        points:
+        - ptid: '{301;638}'
+          rel: stem
+          points:
+          - ptid: '{750;668}'
+            rel: shift
+      - ptid:
+        - '{292;597}'
+        - '{243;319}'
+        ref:
+        - '{301;638}'
+        - '{237;277}'
+        rel: interpolate
+      - ptid: '{711;10}'
+        points:
+        - ptid: '{249;-39}'
+          rel: shift
+        - ptid: '{775;371}'
+          rel: stem
+      - ptid:
+        - '{766;330}'
+        - '{717;52}'
+        ref:
+        - '{775;371}'
+        - '{711;10}'
+        rel: interpolate
+  ampersand:
+    y:
+      points:
+      - ptid: '{169;-12}'
+        pos: lc-baseline-undershoot
+        points:
+        - ptid: '{488;-12}'
+          rel: stem
+          min: false
+          points:
+          - ptid: '{514;42}'
+            rel: stem
+            round: false
+        - ptid: '{193;48}'
+          rel: stem
+          round: false
+      - ptid: '{318;596}'
+        points:
+        - ptid: '{311;566}'
+          rel: stem
+          round: false
+      - ptid:
+        - '{405;178}'
+        - '{419;144}'
+        - '{445;171}'
+        - '{432;206}'
+        - '{246;335}'
+        - '{302;387}'
+        - '{283;345}'
+        - '{250;361}'
+        ref:
+        - '{488;-12}'
+        - '{318;596}'
+        rel: interpolate
+      - ptid: '{613;443}'
+        ref:
+        - '{318;596}'
+        - '{169;-12}'
+        rel: interpolate
+        round: true
+        points:
+        - ptid: '{541;416}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{681;416}'
+            rel: shift
+    props:
+      category: Ll
+  quotesingle:
+    y:
+      points:
+      - ptid: '{100;419}'
+        points:
+        - ptid: '{37;646}'
+          rel: stem
+  plus:
+    y:
+      points:
+      - ptid: '{293;278}'
+        points:
+        - ptid: '{293;89}'
+          rel: shift
+        - ptid: '{224;278}'
+          rel: shift
+        - ptid: '{293;338}'
+          rel: stem
+          round: false
+          points:
+          - ptid: '{293;526}'
+            rel: shift
+          - ptid: '{224;338}'
+            rel: shift
+  hyphen:
+    y:
+      points:
+      - ptid: '{35;216}'
+        pos: hyphen-height
+        points:
+        - ptid: '{35;266}'
+          rel: stem
+          round: false
+  equal:
+    y:
+      points:
+      - ptid: '{43;204}'
+        points:
+        - ptid: '{43;264}'
+          rel: stem
+          points:
+          - ptid: '{43;351}'
+            rel: stem
+            points:
+            - ptid: '{43;411}'
+              rel: stem
 masters:
   opsz-min:
     name: opsz-min
