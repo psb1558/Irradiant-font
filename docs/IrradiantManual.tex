@@ -1,6 +1,8 @@
 \documentclass[12pt]{book}
 %\usepackage{fontspec}
 \usepackage{polyglossia}
+\usepackage{xcolor}
+\definecolor{BrickRed}{RGB}{146,18,6}
 \setdefaultlanguage{english}
 \setotherlanguages{french,russian,greek,german,latin,polish,italian,dutch,bulgarian}
 \setmainfont{IrradiantVariable}[
@@ -131,9 +133,9 @@
 
 \begin{titlepage}
 \hrulefill\\
-\Huge \centering {Irradiant} \\[1cm]
+\Huge \centering \textcolor{BrickRed}{Irradiant} \\[1cm]
 \huge \centering A modern antiqua typeface \\[1cm]
-\large \centering by {\addfontfeature{Letters=SmallCaps}Peter S. Baker}\\[1cm]
+\large \centering by {\addfontfeature{Letters=SmallCaps,Weight=500}Peter S. Baker}\\[1cm]
 \huge\centering {\itshape sampler and feature list} \\
 \hrulefill
 \end{titlepage}
@@ -214,7 +216,7 @@ at the coming of the sun of \textit{Hyperion}\footnote{Hyperion the Sun.}
 fear not his burning heat, being bedewed and sprinkled with the
 Crystalline tears of the sweet morning, whenas the
 Halcyons\footnote{Halcyons are certain birds which building near the
-  shore upon the waves there will be no storme until the young be
+  shore upon the waves there will be no storm until the young be
   hatched.} upon the level waves of the still, calm, and quiet
 flowing seas do build their nests in sight of the sandy shore,
 whereas the sorrowful Ero with scalding sighs did behold the
@@ -294,7 +296,7 @@ all right at the end; it is what preyed on Gatsby, what foul dust
 floated in the wake of his dreams that temporarily closed out my
 interest in the abortive sorrows and short-winded elations of men.
 
-\section*{Russian and French, 12pt regular and italic}
+\section*{Russian and French, 12pt regular}
 
 \noindent\textfrench{— Eh bien, mon prince. Gênes et Lucques ne sont plus que des apanages,
 des поместья, de la famille Buonaparte. Non, je vous préviens que si
