@@ -1,6 +1,9 @@
 {
 .appVersion = "3337";
 .formatVersion = 3;
+DisplayStrings = (
+"À"
+);
 axes = (
 {
 name = "Optical size";
@@ -1315,6 +1318,48 @@ axesValues = (
 12,
 400
 );
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 750;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 750;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
+);
 id = m01;
 metricValues = (
 {
@@ -1415,6 +1460,48 @@ KernOnModels = (
 axesValues = (
 6,
 400
+);
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
 );
 id = "66C19249-B420-404C-A3E7-B74793AC6646";
 metricValues = (
@@ -1517,6 +1604,48 @@ axesValues = (
 16,
 400
 );
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
+);
 id = m004;
 metricValues = (
 {
@@ -1617,6 +1746,48 @@ KernOnModels = (
 axesValues = (
 12,
 700
+);
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
 );
 iconName = Bold;
 id = "427C505E-2C0B-4FBE-8765-228C251EA8A7";
@@ -2451,9 +2622,14 @@ unicode = 196;
 glyphname = Agrave;
 kernLeft = KO_A;
 kernRight = KO_A;
-lastChange = "2025-04-03 16:27:06 +0000";
+lastChange = "2025-05-09 19:36:42 +0000";
 layers = (
 {
+guides = (
+{
+pos = (373,873);
+}
+);
 layerId = m01;
 shapes = (
 {
@@ -2467,6 +2643,11 @@ ref = gravecomb.case;
 width = 774;
 },
 {
+guides = (
+{
+pos = (373,881);
+}
+);
 layerId = "66C19249-B420-404C-A3E7-B74793AC6646";
 shapes = (
 {
@@ -244734,53 +244915,6 @@ width = 441;
 unicode = 45;
 },
 {
-glyphname = softhyphen;
-lastChange = "2025-02-18 12:52:23 +0000";
-layers = (
-{
-layerId = m01;
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 441;
-},
-{
-layerId = "66C19249-B420-404C-A3E7-B74793AC6646";
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 458;
-},
-{
-layerId = m004;
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 441;
-},
-{
-layerId = "427C505E-2C0B-4FBE-8765-228C251EA8A7";
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 441;
-}
-);
-unicode = 173;
-},
-{
 glyphname = endash;
 lastChange = "2025-04-12 00:27:23 +0000";
 layers = (
@@ -287386,8 +287520,7 @@ COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
-OTHER DEALINGS IN THE FONT SOFTWARE.
-";
+OTHER DEALINGS IN THE FONT SOFTWARE.";
 }
 );
 },

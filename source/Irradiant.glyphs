@@ -159,9 +159,9 @@ features = (
 {
 automatic = 1;
 code = "feature locl;
+feature c2sc;
 feature zero;
 feature ss09;
-feature c2sc;
 feature c2sc;
 feature smcp;
 feature case;
@@ -1213,6 +1213,48 @@ axesValues = (
 12,
 400
 );
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
+);
 id = m01;
 metricValues = (
 {
@@ -1278,6 +1320,48 @@ KernOnModels = (
 axesValues = (
 6,
 400
+);
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
 );
 guides = (
 {
@@ -1350,6 +1434,48 @@ axesValues = (
 16,
 400
 );
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
+);
 guides = (
 {
 pos = (4,659);
@@ -1420,6 +1546,48 @@ KernOnModels = (
 axesValues = (
 12,
 700
+);
+customParameters = (
+{
+name = winAscent;
+value = 1010;
+},
+{
+name = winDescent;
+value = 324;
+},
+{
+name = underlineThickness;
+value = 40;
+},
+{
+name = underlinePosition;
+value = -75;
+},
+{
+name = typoAscender;
+value = 885;
+},
+{
+name = typoDescender;
+value = -255;
+},
+{
+name = typoLineGap;
+value = 0;
+},
+{
+name = hheaAscender;
+value = 885;
+},
+{
+name = hheaDescender;
+value = -255;
+},
+{
+name = hheaLineGap;
+value = 0;
+}
 );
 iconName = Bold;
 id = "44D59E61-3B4F-4F98-A7D7-4CA7F8682DBB";
@@ -2235,9 +2403,14 @@ unicode = 196;
 glyphname = Agrave;
 kernLeft = KO_A;
 kernRight = KO_A;
-lastChange = "2025-03-15 18:33:38 +0000";
+lastChange = "2025-05-09 19:34:43 +0000";
 layers = (
 {
+guides = (
+{
+pos = (362,873);
+}
+);
 layerId = m01;
 shapes = (
 {
@@ -2251,6 +2424,11 @@ ref = gravecomb.case;
 width = 787;
 },
 {
+guides = (
+{
+pos = (362,881);
+}
+);
 layerId = "66C19249-B420-404C-A3E7-B74793AC6646";
 shapes = (
 {
@@ -2264,6 +2442,11 @@ ref = gravecomb.case;
 width = 800;
 },
 {
+guides = (
+{
+pos = (362,873);
+}
+);
 layerId = m004;
 shapes = (
 {
@@ -2277,6 +2460,11 @@ ref = gravecomb.case;
 width = 716;
 },
 {
+guides = (
+{
+pos = (362,873);
+}
+);
 layerId = "44D59E61-3B4F-4F98-A7D7-4CA7F8682DBB";
 shapes = (
 {
@@ -37598,7 +37786,7 @@ unicode = 339;
 glyphname = p;
 kernLeft = KO_p;
 kernRight = KO_o;
-lastChange = "2025-05-07 03:04:31 +0000";
+lastChange = "2025-05-09 19:14:36 +0000";
 layers = (
 {
 anchors = (
@@ -37613,7 +37801,10 @@ pos = (302,465);
 );
 guides = (
 {
-pos = (264,-208);
+pos = (295,-118);
+},
+{
+pos = (295,-78);
 }
 );
 layerId = m01;
@@ -39011,11 +39202,11 @@ shapes = (
 ref = r;
 },
 {
-pos = (481,0);
+pos = (468,0);
 ref = acutecomb;
 }
 );
-width = 465;
+width = 452;
 },
 {
 layerId = m004;
@@ -39024,11 +39215,11 @@ shapes = (
 ref = r;
 },
 {
-pos = (343,0);
+pos = (350,0);
 ref = acutecomb;
 }
 );
-width = 321;
+width = 328;
 },
 {
 layerId = "44D59E61-3B4F-4F98-A7D7-4CA7F8682DBB";
@@ -39037,11 +39228,11 @@ shapes = (
 ref = r;
 },
 {
-pos = (403,0);
+pos = (407,0);
 ref = acutecomb;
 }
 );
-width = 422;
+width = 426;
 }
 );
 unicode = 341;
@@ -173185,7 +173376,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (383,-1);
+pos = (383,0);
 ref = tonos;
 }
 );
@@ -173211,7 +173402,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (327,1);
+pos = (327,0);
 ref = tonos;
 }
 );
@@ -173246,7 +173437,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (423,-1);
+pos = (423,0);
 ref = dieresiscomb;
 }
 );
@@ -173272,7 +173463,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (349,1);
+pos = (349,0);
 ref = dieresiscomb;
 }
 );
@@ -173307,7 +173498,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (328,-1);
+pos = (328,0);
 ref = dialytikatonoscomb;
 }
 );
@@ -173333,7 +173524,7 @@ shapes = (
 ref = iota;
 },
 {
-pos = (320,1);
+pos = (320,0);
 ref = dialytikatonoscomb;
 }
 );
@@ -206812,23 +207003,23 @@ unicode = 32;
 },
 {
 glyphname = nbspace;
-lastChange = "2025-01-26 01:26:09 +0000";
+lastChange = "2025-05-09 19:06:48 +0000";
 layers = (
 {
 layerId = m01;
-width = 301;
+width = 218;
 },
 {
 layerId = "66C19249-B420-404C-A3E7-B74793AC6646";
-width = 300;
+width = 254;
 },
 {
 layerId = m004;
-width = 300;
+width = 179;
 },
 {
 layerId = "44D59E61-3B4F-4F98-A7D7-4CA7F8682DBB";
-width = 301;
+width = 218;
 }
 );
 unicode = 160;
@@ -208668,53 +208859,6 @@ width = 482;
 }
 );
 unicode = 45;
-},
-{
-glyphname = softhyphen;
-lastChange = "2025-01-26 01:26:09 +0000";
-layers = (
-{
-layerId = m01;
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 482;
-},
-{
-layerId = "66C19249-B420-404C-A3E7-B74793AC6646";
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 457;
-},
-{
-layerId = m004;
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 389;
-},
-{
-layerId = "44D59E61-3B4F-4F98-A7D7-4CA7F8682DBB";
-shapes = (
-{
-alignment = 1;
-ref = hyphen;
-}
-);
-width = 482;
-}
-);
-unicode = 173;
 },
 {
 glyphname = endash;
@@ -253589,8 +253733,7 @@ COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
-OTHER DEALINGS IN THE FONT SOFTWARE.
-";
+OTHER DEALINGS IN THE FONT SOFTWARE.";
 }
 );
 },
