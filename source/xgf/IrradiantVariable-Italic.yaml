@@ -1,10 +1,12 @@
 font:
-  in: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariable-ItalicVF.ttf
-  out: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantVariable-Italic.ttf
+  in: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantV-ItalicVF.ttf
+  out: /Users/peterbaker/work/GitHub/Irradiant-font/fonts/IrradiantV-Italic.ttf
 defaults:
   cv_vars_generated: true
   no-round:
   - stem
+  cleartype: true
+  assume-always-y: true
 cvt:
   baseline:
     val: 0
@@ -617,11 +619,12 @@ macros:
           </reference>
           <point num="pt-a-sh"/>
         </shift>
-          <shift compile-if="nan(pt-a-sh)">
+        <shift compile-if="nan(pt-a-sh)">
           <reference>
             <point num="pt-a"/>
           </reference>
-        <set ref="pt-a-sh"/> </shift>
+          <set ref="pt-a-sh"/>
+        </shift>
       </code>
 glyphs:
   o:
@@ -1280,8 +1283,8 @@ glyphs:
         - ptid:
           - '{409;635}'
           - '{417;601}'
-          - '{438;601}'
           - '{417;594}'
+          - '{438;601}'
           rel: shift
         - ptid: '{369;631}'
           rel: stem
@@ -1672,6 +1675,9 @@ glyphs:
           pt-a: '{125;650}'
         function:
           nm: cupped-serif-helper
+          base-cv: cap-height
+          cup-cv: serif-undershoot
+          ppem: '190'
       - ptid: '{432;650}'
         ref: '{125;650}'
         rel: shift
