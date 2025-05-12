@@ -5,7 +5,7 @@
 \definecolor{BrickRed}{RGB}{146,18,6}
 \setdefaultlanguage{english}
 \setotherlanguages{french,russian,greek,german,latin,polish,italian,dutch,bulgarian}
-\setmainfont{IrradiantVariable}[
+\setmainfont{IrradiantV}[
     ItalicFont =         {*-Italic},
     BoldFont =           {*},
     BoldItalicFont =     {*-Italic},
@@ -57,7 +57,7 @@
     },
     % StylisticSet=8,
     ]
-\newfontfamily{\stdfont}{IrradiantVariable}[
+\newfontfamily{\stdfont}{IrradiantV}[
     ItalicFont =         {*-Italic},
     BoldFont =           {*},
     BoldItalicFont =     {*-Italic},
@@ -112,8 +112,8 @@
 
 \usepackage{microtype}
 \raggedbottom
-%\newfontfamily\cyrillicfont[Script=Cyrillic]{IrradiantVariable}
-%\newfontfamily\greekfont[Script=Greek]{IrradiantVariable}
+%\newfontfamily\cyrillicfont[Script=Cyrillic]{IrradiantV}
+%\newfontfamily\greekfont[Script=Greek]{IrradiantV}
     \newcommand{\cyrillicfont}{\stdfont}
     \newcommand{\greekfont}{\stdfont}
     \newcommand{\germanfont}{\stdfont}
@@ -144,7 +144,7 @@
 \section*{About the font}
 
 Irradiant is based on two early typefaces by Francesco Griffo
-(1450–1518), who worked for the Venetian publisher Aldus Manutius. The
+(1450–1518), punch-cutter for the Venetian publisher Aldus Manutius. The
 first is the roman typeface used in \textit{Hypnerotomachia Poliphili}
 (1499), a book famous for the beauty of its type, layout, and
 illustrations; the second is the italic used in the Aldine Virgil of
@@ -159,23 +159,23 @@ illustrations; the second is the italic used in the Aldine Virgil of
 Despite its origins, Irradiant is not exactly a revival. Many changes,
 both great and small, have been made to render the design suitable for modern
 applications. Irradiant contains a Greek script that is very different
-from Griffo's Greek types, being both modernized and designed to harmonize
+from Griffo's Greek types, being designed from scratch to harmonize
 with Irradiant's Latin letters. It also covers the Cyrillic script, for which 
 Griffo’s types provide no model at all.
 
 With its low contrast and gentle curves, Irradiant has an informal look, 
 making it suitable for fiction, magazines, and most websites.
 It covers over 300 languages, comes in both variable and static versions,
-and has a number of OpenType features (for which see page 15).
+and has a number of OpenType features (for which see page 17).
 
 \section*{Early modern English, mixed sizes and styles}
 
-\noindent\textit{The Author begins his} Hypnerotomachia, \textit{to set
+{\large\noindent\textit{The Author begins his} Hypnerotomachia, \textit{to set
   down the hour and time when in his sleep it seemed to him that
   he was in a quiet solitary desert, and uninhabited plain, and
   from thence afterward how he entered unadvisedly before he was
   aware, with great fear, into a dark, obscure, and unfrequented
-  wood.}
+  wood.}}
 
 \begin{center}
   \textsc{The description of the morning.}
@@ -561,6 +561,46 @@ abcdefghijklmnopqrstuvwxyz äēœæþðß\\
 0123456789
 \end{center}
 \pagebreak
+
+
+\section*{Axes}
+
+Most font users understand the concept of the \textbf{axis} even if they haven’t encountered the term.
+An axis is a variable aspect of a font’s design. In a traditional four-member font family
+consisting of Regular, Italic, Bold, and Bold Italic faces, there are two axes: \textbf{Italic}
+and \textbf{Weight}. The Italic axis typically has two possible values: “on” (or 1) for italic type
+and “off” (or 0) for roman or upright. In a four-face family, the Weight axis also has two
+values, “Regular” (or 400) and “Bold” (or 700). But many font families have more than two weights.
+For example, the popular Noto Sans family has weights of “Thin” (100) and “Black” (900) at the
+extremes of the axis, with seven weights in between.
+
+A constraint on the traditional (or \textbf{static}) font family is that there must be a separate
+font file for every design variant. The more design variants there are
+(including Italic and Weight), the more files will be required. Thus a static font family with many 
+weights can be an unwieldy thing.
+
+A recent innovation in font technology, the \textbf{variable font} typically comes in two files,
+one for the italic face and one for roman or upright. Each of these two files can contain 
+one or more other axes, typically Weight, but sometimes more. With variable fonts,
+the axes (except for Italic) can be varied continuously. For example, if you are using the
+variable version of Noto Sans and you find the Regular weight (400) a little too light but the 
+Medium (500) too heavy, you can choose any value in between: 410, 450, or 463.3.
+
+Irradiant has the two standard axes, Italic and Weight, and also a third, called \textbf{Optical Size},
+which varies the shapes of characters with the type size: small type is wider than 
+large, with shorter ascenders and descenders and less contrast between thick and thin strokes.
+Like Noto Sans, Irradiant comes in both static and variable versions. The static version has
+weights of Regular (400), Medium (500), Semibold (600), and Bold (700), and optical sizes of
+6pt, 8pt, 10pt, Regular (12pt), 14pt, and 16pt (to be used for sizes of 16pt and above).
+The variable version has the same axes, but these are continuously variable from 400 to 700 for
+weight, and 6 to 16 for optical size.
+
+All major web browsers support variable fonts. Web developers using Irradiant should choose the
+variable version, since users will have to download two files at most, while users of the static
+version may have to download as many as forty-eight. Other applications supporting variable 
+fonts include Adobe InDesign, LibreOffice, Affinity Publisher, Figma, LuaTeX, and others.%
+\pagebreak
+
 
 
 
