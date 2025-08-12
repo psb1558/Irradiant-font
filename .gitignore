@@ -1,4 +1,11 @@
-
+*.py
 *.otf
 *.ttf
+*.zip
+*.xgf
 .DS_Store
+docs/IrradiantManual.log
+docs/IrradiantManual.aux
+fonts
+Irradiant
+mkdist
