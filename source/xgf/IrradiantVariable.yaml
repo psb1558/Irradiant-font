@@ -16898,13 +16898,6 @@ glyphs:
         - ptid: '{-189;771}'
           rel: stem
         pos: sc-diacritic-height
-  caron.alt:
-    y:
-      points:
-      - ptid: '{263;545}'
-        points:
-        - ptid: '{231;729}'
-          rel: stem
   gravecomb.case:
     y:
       points:
@@ -17202,22 +17195,6 @@ glyphs:
           - ptid: '{-208;703}'
             rel: stem
             round: false
-  macron.alt:
-    y:
-      points:
-      - ptid: '{191;655}'
-        points:
-        - ptid: '{267;741}'
-          rel: stem
-          round: false
-  uni0304.alt:
-    y:
-      points:
-      - ptid: '{-253;598}'
-        points:
-        - ptid: '{-177;684}'
-          rel: stem
-          round: false
   uni0306.cyr:
     y:
       points:
@@ -17686,14 +17663,14 @@ glyphs:
         - '{-158;606}'
         - '{-225;771}'
         rel: interpolate
-      - ptid: '{-100;688}'
+      - ptid: '{-350;688}'
         ref:
         - '{-225;771}'
         - '{-158;606}'
         rel: interpolate
         round: true
         points:
-        - ptid: '{-138;833}'
+        - ptid: '{-424;823}'
           rel: stem
   uni03020301.sc:
     y:
@@ -17717,7 +17694,7 @@ glyphs:
         rel: interpolate
         round: true
         points:
-        - ptid: '{-66;833}'
+        - ptid: '{-76;823}'
           rel: stem
   uni03020303.sc:
     y:
@@ -17790,7 +17767,7 @@ glyphs:
           - ptid: '{-215;707}'
             rel: stem
             points:
-            - ptid: '{-253;852}'
+            - ptid: '{-243;842}'
               rel: stem
         pos: sc-diacritic-height
   uni03060301.sc:
@@ -17804,7 +17781,7 @@ glyphs:
           - ptid: '{-205;707}'
             rel: stem
             points:
-            - ptid: '{-167;852}'
+            - ptid: '{-177;842}'
               rel: stem
         pos: sc-diacritic-height
   uni03060303.sc:
@@ -17860,20 +17837,6 @@ glyphs:
         - '{-214;707}'
         - '{-201;886}'
         rel: interpolate
-  breveacutecomb:
-    y:
-      points:
-      - ptid: '{-209;557}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-210;608}'
-          rel: stem
-          points:
-          - ptid: '{-205;648}'
-            rel: stem
-            points:
-            - ptid: '{-154;813}'
-              rel: stem
   breveacutecomb.case:
     y:
       points:
@@ -17888,20 +17851,6 @@ glyphs:
             points:
             - ptid: '{-167;974}'
               rel: stem
-  brevegravecomb:
-    y:
-      points:
-      - ptid: '{-209;557}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-210;608}'
-          rel: stem
-          points:
-          - ptid: '{-215;648}'
-            rel: stem
-            points:
-            - ptid: '{-265;813}'
-              rel: stem
   brevegravecomb.case:
     y:
       points:
@@ -17914,35 +17863,8 @@ glyphs:
           - ptid: '{-215;829}'
             rel: stem
             points:
-            - ptid: '{-253;974}'
+            - ptid: '{-243;964}'
               rel: stem
-  brevehookabovecomb:
-    y:
-      points:
-      - ptid: '{-209;557}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-210;608}'
-          rel: stem
-          points:
-          - ptid: '{-214;648}'
-            rel: stem
-            round: false
-            points:
-            - ptid: '{-201;847}'
-              rel: stem
-              round: false
-              points:
-              - ptid: '{-238;813}'
-                rel: stem
-                round: false
-      - ptid:
-        - '{-264;713}'
-        - '{-221;702}'
-        ref:
-        - '{-201;847}'
-        - '{-214;648}'
-        rel: interpolate
   brevehookabovecomb.case:
     y:
       points:
@@ -17970,32 +17892,6 @@ glyphs:
         - '{-201;1008}'
         - '{-214;829}'
         rel: interpolate
-  brevetildecomb:
-    y:
-      points:
-      - ptid: '{-209;557}'
-        pos: greek-diacritic-height
-        points:
-        - ptid: '{-210;608}'
-          rel: stem
-          round: false
-        - ptid: '{-99;695}'
-          rel: stem
-          points:
-          - ptid: '{-320;695}'
-            rel: shift
-          - ptid: '{-154;730}'
-            rel: stem
-            points:
-            - ptid: '{-273;775}'
-              rel: stem
-              points:
-              - ptid: '{-268;821}'
-                rel: stem
-                round: false
-            - ptid: '{-149;775}'
-              rel: stem
-              round: false
   brevetildecomb.case:
     y:
       points:
@@ -18021,28 +17917,6 @@ glyphs:
                 - ptid: '{-263;1007}'
                   rel: stem
                   round: false
-  circumflexacutecomb:
-    y:
-      points:
-      - ptid: '{-186;547}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-314;547}'
-          rel: shift
-        - ptid: '{-230;712}'
-          rel: stem
-          points:
-          - ptid: '{-226;688}'
-            rel: shift
-      - ptid: '{-131;629}'
-        ref:
-        - '{-230;712}'
-        - '{-186;547}'
-        rel: interpolate
-        round: true
-        points:
-        - ptid: '{-80;794}'
-          rel: stem
   circumflexacutecomb.case:
     y:
       points:
@@ -18063,29 +17937,7 @@ glyphs:
         rel: interpolate
         round: true
         points:
-        - ptid: '{-59;955}'
-          rel: stem
-  circumflexgravecomb:
-    y:
-      points:
-      - ptid: '{-186;547}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-314;547}'
-          rel: shift
-        - ptid: '{-230;712}'
-          rel: stem
-          points:
-          - ptid: '{-226;688}'
-            rel: shift
-      - ptid: '{-108;629}'
-        ref:
-        - '{-230;712}'
-        - '{-186;547}'
-        rel: interpolate
-        round: true
-        points:
-        - ptid: '{-158;794}'
+        - ptid: '{-69;945}'
           rel: stem
   circumflexgravecomb.case:
     y:
@@ -18100,48 +17952,15 @@ glyphs:
           points:
           - ptid: '{-237;867}'
             rel: shift
-      - ptid: '{-89;810}'
+      - ptid: '{-365;810}'
         ref:
-        - '{-151;728}'
         - '{-220;913}'
+        - '{-151;728}'
         rel: interpolate
         round: true
         points:
-        - ptid: '{-127;955}'
+        - ptid: '{-439;945}'
           rel: stem
-  circumflexhookabovecomb:
-    y:
-      points:
-      - ptid: '{-186;547}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-314;547}'
-          rel: shift
-        - ptid: '{-230;712}'
-          rel: stem
-          points:
-          - ptid: '{-226;688}'
-            rel: shift
-      - ptid: '{-125;610}'
-        ref:
-        - '{-186;547}'
-        - '{-230;712}'
-        rel: interpolate
-        points:
-        - ptid: '{-112;809}'
-          rel: stem
-          round: false
-          points:
-          - ptid: '{-149;775}'
-            rel: stem
-            round: false
-      - ptid:
-        - '{-132;664}'
-        - '{-175;675}'
-        ref:
-        - '{-112;809}'
-        - '{-125;610}'
-        rel: interpolate
   circumflexhookabovecomb.case:
     y:
       points:
@@ -18170,34 +17989,6 @@ glyphs:
         ref:
         - '{-59;950}'
         - '{-72;771}'
-        rel: interpolate
-  circumflextildecomb:
-    y:
-      points:
-      - ptid: '{-186;547}'
-        pos: diacritic-height
-        points:
-        - ptid: '{-314;547}'
-          rel: shift
-        - ptid: '{-230;712}'
-          rel: stem
-          points:
-          - ptid: '{-193;742}'
-            rel: stem
-            points:
-            - ptid: '{-188;787}'
-              rel: stem
-              round: false
-            - ptid: '{-312;787}'
-              rel: stem
-              points:
-              - ptid: '{-307;833}'
-                rel: stem
-                round: false
-      - ptid: '{-273;688}'
-        ref:
-        - '{-186;547}'
-        - '{-230;712}'
         rel: interpolate
   circumflextildecomb.case:
     y:
@@ -18350,7 +18141,7 @@ glyphs:
           - ptid: '{-215;648}'
             rel: stem
             points:
-            - ptid: '{-265;813}'
+            - ptid: '{-241;783}'
               rel: stem
   uni03060301:
     y:
@@ -18364,7 +18155,7 @@ glyphs:
           - ptid: '{-205;648}'
             rel: stem
             points:
-            - ptid: '{-154;813}'
+            - ptid: '{-178;783}'
               rel: stem
   uni03060309:
     y:
@@ -18411,49 +18202,49 @@ glyphs:
     y:
       points:
       - ptid: '{-314;547}'
-        pos: greek-diacritic-height
+        pos: diacritic-height
         points:
         - ptid: '{-186;547}'
           rel: shift
         - ptid: '{-274;712}'
           rel: stem
-      - ptid: '{-273;688}'
+      - ptid: '{-226;688}'
         ref:
         - '{-314;547}'
         - '{-274;712}'
         rel: interpolate
-      - ptid: '{-108;629}'
+      - ptid: '{-335;629}'
         ref:
         - '{-314;547}'
         - '{-274;712}'
         rel: interpolate
         round: true
         points:
-        - ptid: '{-158;794}'
+        - ptid: '{-409;764}'
           rel: stem
   uni03020301:
     y:
       points:
-      - ptid: '{-186;547}'
-        pos: greek-diacritic-height
+      - ptid: '{-350;547}'
+        pos: diacritic-height
         points:
-        - ptid: '{-314;547}'
+        - ptid: '{-151;547}'
           rel: shift
-        - ptid: '{-230;712}'
+        - ptid: '{-279;732}'
           rel: stem
-      - ptid: '{-273;688}'
+      - ptid: '{-237;686}'
         ref:
-        - '{-186;547}'
-        - '{-230;712}'
+        - '{-350;547}'
+        - '{-279;732}'
         rel: interpolate
-      - ptid: '{-131;629}'
+      - ptid: '{-143;629}'
         ref:
-        - '{-230;712}'
-        - '{-186;547}'
+        - '{-350;547}'
+        - '{-279;732}'
         rel: interpolate
         round: true
         points:
-        - ptid: '{-80;794}'
+        - ptid: '{-69;764}'
           rel: stem
   uni03020303:
     y:

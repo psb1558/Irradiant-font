@@ -20419,10 +20419,6 @@ glyphs:
         - '{206;0}'
         - '{364;629}'
         rel: interpolate
-  caron.alt:
-    y:
-      points:
-      - ptid: '{263;545}'
   gravecomb.case:
     y:
       points:
@@ -21169,13 +21165,6 @@ glyphs:
             rel: shift
         - ptid: '{-191;761}'
           rel: stem
-  macron.alt:
-    y:
-      points:
-      - ptid: '{267;655}'
-        points:
-        - ptid: '{174;741}'
-          rel: stem
   lcaron:
     y:
       points:
@@ -21579,13 +21568,6 @@ glyphs:
         - ptid: '{355;502}'
           rel: stem
           round: false
-  uni0304.alt:
-    y:
-      points:
-      - ptid: '{-253;635}'
-        points:
-        - ptid: '{-270;721}'
-          rel: stem
   uni1F08:
     y:
       points:
@@ -21948,14 +21930,14 @@ glyphs:
           points:
           - ptid: '{-90;688}'
             rel: shift
-      - ptid: '{18;627}'
+      - ptid: '{-210;627}'
         ref:
-        - '{-75;547}'
         - '{-84;712}'
+        - '{-75;547}'
         rel: interpolate
         round: true
         points:
-        - ptid: '{-2;792}'
+        - ptid: '{-260;762}'
           rel: stem
   uni03020300.case:
     y:
@@ -21970,14 +21952,14 @@ glyphs:
           points:
           - ptid: '{-227;867}'
             rel: shift
-      - ptid: '{-89;810}'
+      - ptid: 10
         ref:
-        - '{-202;913}'
-        - '{-153;728}'
+        - 1
+        - 3
         rel: interpolate
         round: true
         points:
-        - ptid: '{-101;955}'
+        - ptid: 9
           rel: stem
   uni03020300.sc:
     y:
@@ -21992,14 +21974,14 @@ glyphs:
           points:
           - ptid: '{-251;745}'
             rel: shift
-      - ptid: '{-113;688}'
+      - ptid: 10
         ref:
-        - '{-177;606}'
-        - '{-226;791}'
+        - 1
+        - 3
         rel: interpolate
         round: true
         points:
-        - ptid: '{-125;833}'
+        - ptid: 9
           rel: stem
   uni03020301:
     y:
@@ -22014,14 +21996,14 @@ glyphs:
           points:
           - ptid: '{-90;688}'
             rel: shift
-      - ptid: '{-45;627}'
+      - ptid: 10
         ref:
-        - '{-75;547}'
-        - '{-84;712}'
+        - 1
+        - 3
         rel: interpolate
         round: true
         points:
-        - ptid: '{82;792}'
+        - ptid: 8
           rel: stem
   uni03020301.case:
     y:
@@ -22065,7 +22047,7 @@ glyphs:
         rel: interpolate
         round: true
         points:
-        - ptid: '{-32;829}'
+        - ptid: 8
           rel: stem
   uni03020303:
     y:
@@ -22267,7 +22249,7 @@ glyphs:
           - ptid: '{-210;815}'
             rel: stem
             points:
-            - ptid: '{-222;960}'
+            - ptid: 15
               rel: stem
   uni03060300.sc:
     y:
@@ -22281,7 +22263,7 @@ glyphs:
           - ptid: '{-232;693}'
             rel: stem
             points:
-            - ptid: '{-244;838}'
+            - ptid: 15
               rel: stem
   uni03060301:
     y:
@@ -22309,7 +22291,7 @@ glyphs:
           - ptid: '{-210;815}'
             rel: stem
             points:
-            - ptid: '{-146;960}'
+            - ptid: 14
               rel: stem
   uni03060301.sc:
     y:
@@ -22323,7 +22305,7 @@ glyphs:
           - ptid: '{-232;693}'
             rel: stem
             points:
-            - ptid: '{-168;838}'
+            - ptid: 14
               rel: stem
   uni03060303:
     y:
