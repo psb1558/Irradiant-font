@@ -21930,14 +21930,14 @@ glyphs:
           points:
           - ptid: '{-90;688}'
             rel: shift
-      - ptid: '{-210;627}'
+      - ptid: 10
         ref:
-        - '{-84;712}'
-        - '{-75;547}'
+        - 1
+        - 3
         rel: interpolate
         round: true
         points:
-        - ptid: '{-260;762}'
+        - ptid: 9
           rel: stem
   uni03020300.case:
     y:
@@ -22137,25 +22137,22 @@ glyphs:
           points:
           - ptid: '{-90;688}'
             rel: shift
-      - ptid: '{7;610}'
+      - ptid: '{17;610}'
         ref:
-        - '{-84;712}'
         - '{-75;547}'
+        - '{-84;712}'
         rel: interpolate
+        round: true
         points:
-        - ptid: '{55;809}'
+        - ptid: '{65;809}'
           rel: stem
-          round: false
-          points:
-          - ptid: '{12;775}'
-            rel: stem
-            round: false
       - ptid:
-        - '{-32;675}'
-        - '{9;664}'
+        - '{22;775}'
+        - '{-22;675}'
+        - '{19;664}'
         ref:
-        - '{55;809}'
-        - '{7;610}'
+        - '{17;610}'
+        - '{65;809}'
         rel: interpolate
   uni03020309.case:
     y:
@@ -22170,25 +22167,22 @@ glyphs:
           points:
           - ptid: '{-227;867}'
             rel: shift
-      - ptid: '{-83;771}'
+      - ptid: '{-74;771}'
         ref:
         - '{-202;913}'
         - '{-153;728}'
         rel: interpolate
+        round: true
         points:
-        - ptid: '{-38;950}'
+        - ptid: '{-29;950}'
           rel: stem
-          round: false
-          points:
-          - ptid: '{-81;916}'
-            rel: stem
-            round: false
       - ptid:
-        - '{-121;836}'
-        - '{-80;825}'
+        - '{-72;916}'
+        - '{-112;836}'
+        - '{-71;825}'
         ref:
-        - '{-38;950}'
-        - '{-83;771}'
+        - '{-74;771}'
+        - '{-29;950}'
         rel: interpolate
   uni03020309.sc:
     y:
@@ -22203,25 +22197,22 @@ glyphs:
           points:
           - ptid: '{-251;745}'
             rel: shift
-      - ptid: '{-107;649}'
+      - ptid: '{-98;649}'
         ref:
-        - '{-177;606}'
         - '{-226;791}'
+        - '{-177;606}'
         rel: interpolate
+        round: true
         points:
-        - ptid: '{-62;828}'
+        - ptid: '{-53;828}'
           rel: stem
-          round: false
-          points:
-          - ptid: '{-105;794}'
-            rel: stem
-            round: false
       - ptid:
-        - '{-104;703}'
-        - '{-145;714}'
+        - '{-96;794}'
+        - '{-95;703}'
+        - '{-136;714}'
         ref:
-        - '{-62;828}'
-        - '{-107;649}'
+        - '{-98;649}'
+        - '{-53;828}'
         rel: interpolate
   uni03060300:
     y:
